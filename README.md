@@ -224,12 +224,9 @@ We’re looking for:
 ---
 
 **About:**
+
 PARITY is a synthetic tokenized bet on Kusama closing the gap on Polkadot — and rewarding those who back the underdog.
 
-```
-
-Let me know if you'd like this published to GitHub or adapted into a visual pitch deck or site copy.
-```
 
 
 
