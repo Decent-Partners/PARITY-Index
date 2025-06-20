@@ -33,7 +33,7 @@ A tokenized rivalry between Kusama & Polkadot.
 
 ---
 
-🟡 Why This Benefits KSM Holders
+## 🟡 Why This Benefits KSM Holders
 
 PARITY is built entirely on Kusama Asset Hub, settles in KSM, and directs fees and value to the Kusama ecosystem:
 
