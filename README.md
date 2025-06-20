@@ -17,6 +17,7 @@ A tokenized rivalry between Kusama & Polkadot.
 | **Chain**     | Kusama Asset Hub (EVM)         |
 | **Settles In**| KSM                            |
 | **Frontend**  | [WIP](https://parity.birdbrain.lol) |
+| **Signer**    | [Virto connect](https://demo.virto.dev/) |
 | **Status**    | Prototype — contracts + UI in development |
 
 ---
