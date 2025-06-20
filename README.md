@@ -33,6 +33,22 @@ A tokenized rivalry between Kusama & Polkadot.
 
 ---
 
+🟡 Why This Benefits KSM Holders
+
+PARITY is built entirely on Kusama Asset Hub, settles in KSM, and directs fees and value to the Kusama ecosystem:
+
+    KSM-Denominated Settlement: All trading, minting, and redemptions are in KSM, increasing utility and demand for the token.
+
+    Treasury-Aligned LPs: Initial liquidity positions are owned by the Kusama Treasury, giving the network direct upside as PARITY adoption grows.
+
+    Fee Capture in KSM: Both mint/redeem fees and PMM slippage are collected in KSM, creating recurring revenue streams for funding governance proposals or further development.
+
+    Ecosystem Narrative: Positions KSM as a serious contender to DOT, while creating a fun, market-driven way for users to speculate on Kusama’s comeback.
+
+    The more PARITY is used and traded, the more value accrues to KSM holders and the Kusama Treasury.
+
+---
+
 ## 📊 Parity Ratio Metrics
 
 | Metric           | Value                          |
