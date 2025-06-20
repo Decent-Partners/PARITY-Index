@@ -214,7 +214,6 @@ Initial guide here [birdbrain.lol](https://birdbrain.lol)
 * Upgrade to native Kusama assets via precompiles
 * Expand to new synthetic indexes (e.g. ETH vs BTC, SOL vs AVAX)
 * Use decentralized oracles (e.g. DIA, Substrate-native feeds)
-* Enable composability with Kabocha dUSD and Krievo orgs
 
 ---
 
