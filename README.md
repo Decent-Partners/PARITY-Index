@@ -16,7 +16,7 @@ A tokenized rivalry between Kusama & Polkadot.
 | **Mechanism** | Synthetic PMM (Proactive Market Maker) |
 | **Chain**     | Kusama Asset Hub (EVM)         |
 | **Settles In**| KSM                            |
-| **Frontend**  | [birdbrain.lol](https://birdbrain.lol) |
+| **Frontend**  | [WIP](https://parity.birdbrain.lol) |
 | **Status**    | Prototype — contracts + UI in development |
 
 ---
