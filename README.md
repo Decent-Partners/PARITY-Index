@@ -10,7 +10,7 @@ A prize pool pays out to holders when the the two assets reach parity and the co
 
 The design isolates relative value of two assets, from their market prices, creating a novel defi primitive. 
 
-**The project is unruggable**: 
+**The project is designe to be unruggable**: 
 
 - Launch team seed initial liquidity (initial KSM + matching PARITY) and send LP tokens to the Kusama Treasury.
 
@@ -56,13 +56,13 @@ Why it works:
 
 ## 🟡 Why This Benefits KSM Holders
 
-PARITY is deployed on Kusama Asset Hub, settled in KSM, priced using dUSD stablecoin and is designed to kickstarts DeFi on Kusama Asset Hub:
+PARITY is deployed on Kusama Asset Hub, settled in KSM, priced using the native dUSD stablecoin and is designed to kickstarts DeFi on Kusama Asset Hub:
 
-* **Stablecoin-based Liquidity, KSM-based Settlement**: All minting, redemptions, and trading happen against a stablecoin (e.g. dUSD) to isolate DOT\:KSM relative valuation. Behind the scenes, dUSD is backed and redeemable for KSM, ensuring KSM demand and usability.
-* **Initial LP Backed by Treasury**: The Kusama Treasury seeds liquidity (using burn redirects made possible by [WFC-437](https://kusama.subsquare.io/referenda/437)), aligning public funds with upside from PARITY adoption.
+* **Stablecoin-based Liquidity, KSM-based Settlement**: All minting, redemptions, and trading happen against the dUSD stablecoin to isolate DOT:KSM relative valuation. Behind the scenes, dUSD is a fully backed and regulated stablecoin issued by [Brale](https://brale.io). 
+* **Initial LP seeded by KSM protocol**: The Kusama protocol seeds liquidity (using the [burn redirect](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.dotters.network#/extrinsics/decode/0x2e00010100) made possible by [WFC-437](https://kusama.subsquare.io/referenda/437), aligning public funds with upside from PARITY adoption.
 * **Fee Capture Flows Back to KSM Ecosystem**:
 
-  * Mint/redeem and slippage fees collected in dUSD stablecoin
+  * Mint/redeem fees collected in dUSD stablecoin
 * **Ecosystem Narrative**: PARITY makes KSM the center of an attention-grabbing synthetic bet — a gamified, memetic, and market-tradable comeback arc for Kusama.
 
 > 💥 The more PARITY is used and traded, the more demand for dUSD — and the more value accrues to KSM holders and the Kusama Treasury.
