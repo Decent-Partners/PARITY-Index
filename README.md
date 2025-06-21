@@ -1,5 +1,5 @@
 # PARITY Index — Synthetic DOT:KSM Ratio Asset
-### Launching an original defi narrative on Kusama Asset Hub
+### Kickstarting defi on Kusama Asset Hub with a novel betting primitive. 
 
 **WIP frontend**: [here](https://parity.birdbrain.lol)
 
