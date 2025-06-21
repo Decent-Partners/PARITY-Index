@@ -1,24 +1,43 @@
-# PARITY Index — Synthetic DOT:KSM Ratio Asset on Kusama Asset Hub
+≈
+**WIP frontend**: [here](https://parity.birdbrain.lol)
 
-> WIP frontend: [birdbrain.lol](https://birdbrain.lol)
+A tokenized rivalry between **Kusama & Polkadot**, expressed as a synthetic trading asset.
 
-A tokenized rivalry between Kusama & Polkadot.
+PARITY is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Polkadot (DOT) to Kusama (KSM). 
+It’s designed to reward convergence — when Kusama gains ground on Polkadot, the PARITY token increases in value.
+A prize pool pays out to holders when the the two assets reach parity and the contest ends. 
 
-**PARITY** is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the **market cap ratio of Polkadot (DOT) to Kusama (KSM)**. It’s designed to reward convergence — when Kusama gains ground on Polkadot, the PARITY token increases in value.
+The design isolates relative value of two assets, from their market prices, creating a novel defi primitive. 
+
+**The project is unruggable**: 
+
+- Devs seed initial liquidity (initial KSM + matching PARITY) and send LP tokens to the Kusama Treasury.
+
+Later, they can propose to:
+
+- Reclaim a small % of LP tokens
+
+Why it works:
+
+    ✅ Rewards proven impact (not promises)
+
+    ✅ Aligns team incentives with adoption
+
+    ✅ Uses earned fees, not upfront treasury funds
 
 ---
 
-## ✨ Overview
+### ✨ Overview
 
-| Property      | Detail                         |
-|---------------|--------------------------------|
-| **Token**     | PARITY                         |
-| **Mechanism** | Synthetic PMM (Proactive Market Maker) |
-| **Chain**     | Kusama Asset Hub (EVM)         |
-| **Settles In**| KSM                            |
-| **Frontend**  | [WIP](https://parity.birdbrain.lol) |
-| **Signer**    | [Virto connect](https://demo.virto.dev/) |
-| **Status**    | Prototype — contracts + UI in development |
+| Property   | Detail                                       |
+| ---------- | -------------------------------------------- |
+| Token      | `PARITY`                                     |
+| Mechanism  | Synthetic PMM (Proactive Market Maker)       |
+| Chain      | Kusama Asset Hub (EVM)                       |
+| Settles In | dUSD stablecoin, redeemable to KSM                |
+| Frontend   | WIP — [birdbrain.lol](https://birdbrain.lol) |
+| Signer     | Virto Connect (EVM support)                  |
+| Status     | Prototype — contracts + UIs in development   |
 
 ---
 
@@ -26,102 +45,96 @@ A tokenized rivalry between Kusama & Polkadot.
 
 ### ⚖️ What is PARITY?
 
-- A synthetic token tracking the **DOT/KSM market cap ratio**
-- Isolates **relative** performance rather than absolute market movement
-- Price increases when **KSM closes the valuation gap** with DOT
-- One-time **Prize Pool** payout to holders if KSM reaches 1:1 with DOT
-- Settled in KSM, indexed by oracle-fed market cap ratio
+* A synthetic token tracking the **DOT/KSM** market cap ratio
+* Price increases when **Kusama closes the gap on Polkadot**
+* Isolates **relative performance**, from absolute price movement
+* **Prize Pool unlocks at 1:1** — holders can claim KSM-based payout
+* **Trades vs stablecoin**, but ultimately **settled in KSM**
 
 ---
 
 ## 🟡 Why This Benefits KSM Holders
 
-PARITY is built entirely on Kusama Asset Hub, settles in KSM, and directs fees and value to the Kusama ecosystem:
+PARITY is deployed on Kusama Asset Hub, settled in KSM, and kickstarts defi on Kusama Asset Hub:
 
-- KSM-Denominated Settlement: All trading, minting, and redemptions are in KSM, increasing utility and demand for the token.
-- Initial pool liquidity provided through a [treasury burn derived redirect](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.dotters.network#/extrinsics/decode/0x2e00010100) made possible by the implementation of [WFC 437](https://kusama.subsquare.io/referenda/437)
-- Treasury-Aligned LPs: Initial liquidity positions are owned by the Kusama Treasury, giving the network direct upside as PARITY adoption grows.
-- Fee Capture in KSM: Both mint/redeem fees and PMM slippage are collected in KSM, creating recurring revenue streams for funding governance proposals or further development.
-- Ecosystem Narrative: Positions KSM as a serious contender to DOT, while creating a fun, market-driven way for users to speculate on Kusama’s comeback.
+* **Stablecoin-based Liquidity, KSM-based Settlement**: All minting, redemptions, and trading happen against a stablecoin (e.g. dUSD) to isolate DOT\:KSM relative valuation. Behind the scenes, dUSD is backed and redeemable for KSM, ensuring KSM demand and usability.
+* **Initial LP Backed by Treasury**: The Kusama Treasury seeds liquidity (using burn redirects made possible by [WFC-437](https://kusama.subsquare.io/referenda/437)), aligning public funds with upside from PARITY adoption.
+* **Fee Capture Flows Back to KSM Ecosystem**:
 
-The more PARITY is used and traded, the more value accrues to KSM holders and the Kusama Treasury.
+  * Mint/redeem and slippage fees collected in dUSD stablecoin
+* **Ecosystem Narrative**: PARITY makes KSM the center of an attention-grabbing synthetic bet — a gamified, memetic, and market-tradable comeback arc for Kusama.
 
----
-
-## 📊 Parity Ratio Metrics
-
-| Metric           | Value                          |
-|------------------|-------------------------------|
-| Current Ratio    | 0.04 (KSM is 4% of DOT’s mcap) |
-| Delta            | +428.18bps (4.28%)             |
-| Sensitivity      | ±10% Price Movement @ Κ=0.8    |
-
-> Small changes in the ratio = significant price movements due to bonding curve.
+> 💥 The more PARITY is used and traded, the more demand for dUSD — and the more value accrues to KSM holders and the Kusama Treasury.
 
 ---
 
-## 🧮 How PMM Works
+## 📊 PARITY Ratio Metrics
 
-Modeled on [DODO’s Proactive Market Maker](https://dodoex.github.io/docs/docs/protocol/introduction/):
+| Metric        | Value                         |
+| ------------- | ----------------------------- |
+| Current Ratio | 0.04 (KSM = 4% of DOT mcap)   |
+| Delta         | +428.18bps (4.28%)            |
+| Sensitivity   | ±10% Price Movement @ Κ = 0.8 |
 
-- Anchors price to DOT/KSM ratio via on-chain oracle
-- Uses a **tunable Κ parameter** to shape bonding curve steepness
-- Supports **single-sided liquidity**
-- Allows price drift and arbitrage correction
-- **Developer-aligned revenue** through mint/redeem + slippage
+> Even small shifts in DOT\:KSM ratio create outsized movements in PARITY price.
 
-### PMM Formula
+---
+
+## 🧮 How the PMM Works
+
+Modeled on [DODO’s Proactive Market Maker](https://dodoex.github.io/docs/docs/PMM/principle/):
+
+* Anchors price to live DOT/KSM market cap ratio
+* Stablecoin-denominated pool (e.g. dUSD) avoids price noise from KSM volatility
+* Tunable Κ (curvature) controls how quickly price reacts to trades
+* Allows single-sided liquidity and arbitrage correction
+
+### PMM Pricing Formula:
 
 ```
-
-Price(x) = P0 \* (1 + Κ \* (x / R))
-
-````
+Price(x) = P₀ * (1 + Κ * (x / R))
+```
 
 Where:
 
-- **P0** = Oracle price (DOT/KSM ratio)
-- **Κ** = Curvature (e.g., 0.8)
-- **x** = Trade size
-- **R** = Pool reserve size
-
-At Κ = 0.8, the curve is responsive but allows meaningful arbitrage opportunities.
+* `P₀` = Oracle price (DOT/KSM)
+* `Κ` = Curvature (e.g., 0.8)
+* `x` = Trade size
+* `R` = Pool reserve
 
 ---
 
 ## 💸 Fee Mechanics
 
-PARITY includes two transparent, usage-driven revenue streams:
+PARITY generates **two usage-based revenue streams**:
 
 ### 1. Mint/Redeem Fee
 
-- **0.25%** fee on all mints/redemptions
-- Collected in KSM
-- Sent to dev multisig for maintenance, oracle ops, and frontend upkeep
+* **0.25%** on all mint or redeem actions
+* **Collected in dUSD**, sent to dev multisig or Treasury
+* Used for: oracle operations, UI hosting, contract upkeep
 
 ```solidity
 function mint(uint256 amountIn) external {
     uint256 fee = (amountIn * 25) / 10000; // 0.25%
     uint256 netAmount = amountIn - fee;
-    // proceed with minting PARITY using netAmount
+    // mint PARITY using netAmount
 }
-````
+```
 
 ### 2. PMM Slippage Capture
 
-* A portion of trade slippage (e.g. **0.5%**) is routed to the dev treasury
-* Happens when trading away from oracle price
-* Non-inflationary, driven purely by usage
+* Small cut (e.g., **0.5%**) of trading slippage collected on off-oracle trades
+* **Non-inflationary**, scales with usage
+* Goes to development treasury or can fund community proposals
 
 ---
 
 ## 🏆 The Prize Pool
 
-* One-time **KSM denominated pool**
-* Unlocks when **DOT/KSM ≤ 1.0**
-* PARITY holders can **burn tokens for pro-rata payout**
-
-### Claim Logic
+* One-time payout **denominated in KSM**
+* Unlocks when **DOT\:KSM ≤ 1.0**
+* PARITY holders burn tokens to **claim KSM pro-rata**
 
 ```solidity
 function claimPrize() external {
@@ -138,47 +151,43 @@ function claimPrize() external {
 
 ## 🧱 Smart Contracts
 
-| Contract        | Role                                      |
-| --------------- | ----------------------------------------- |
-| `PARITYToken`   | ERC-20 token tracking DOT\:KSM ratio      |
-| `OracleFeed`    | Fetches and updates market cap ratio      |
-| `ParityPMMPool` | Custom PMM pool for trading PARITY <> KSM |
-| `PrizePool`     | Holds and distributes prize at 1:1 parity |
+| Contract        | Role                                 |
+| --------------- | ------------------------------------ |
+| `PARITYToken`   | ERC-20 token tracking DOT\:KSM ratio |
+| `OracleFeed`    | Pushes market cap data on-chain      |
+| `ParityPMMPool` | PMM-style stablecoin pool for PARITY |
+| `PrizePool`     | Holds KSM, unlocked at parity        |
 
 ---
 
 ## 🔗 Oracle Feed
 
-* Off-chain script using CoinGecko API
-* Computes `KSM_mcap / DOT_mcap`
-* Pushes to `OracleFeed.sol`
-* Referenced by both PMM & PrizePool contracts
+* External script (CoinGecko API)
+* Calculates DOT / KSM market cap ratio
+* Pushes to Oracle contract on-chain
+* Referenced by both PMM and PrizePool
 
 ---
 
-## 🎨 Frontend
+## 🎨 Frontend — [birdbrain.lol](https://birdbrain.lol)
 
-Initial guide here [birdbrain.lol](https://birdbrain.lol)
+* Simple UI, light UX, fast load
+* Big ratios, few buttons, fun toggle modes
+* Live:
 
-> Simple, light, fast, unserious. Big numbers, few buttons. Clean data UX.
-
-### Features:
-
-* Real-time DOT/KSM ratio
-* Live PARITY price
-* Mint / Redeem interface
-* Prize Pool balance + Claim UI
-* Memeable toggle modes
-* Social sharing of price updates. 
+  * DOT/KSM ratio
+  * PARITY price
+  * Prize pool & claim interface
+  * Social sharing
 
 ---
 
 ## 💼 Development Model
 
-* **Initial liquidity** seeded by targeting [Kusama burn destination](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fkusama.dotters.network#/extrinsics/decode/0x2e00010100).  
-* **LP tokens sent to Kusama Treasury**
-* Team submits **funding proposal** via OpenGov. 
-* Treasury exposure to upside, community-aligned governance
+* Treasury-seeded LPs using redirect from burn destination
+* dUSD-stable pool enables predictable value flow
+* LP tokens held by Treasury — **recoups funding through usage**
+* Dev team proposes OpenGov motions for continued funding as adoption grows
 
 ---
 
@@ -204,44 +213,42 @@ Initial guide here [birdbrain.lol](https://birdbrain.lol)
 
 ## 🧠 Goals
 
-* MVP deployed on Kusama Asset Hub EVM
-* Real-time mint/redeem with KSM
-* Oracle updates & prize logic tested
-* Compliant with [birdbrain.lol](https://birdbrain.lol) style guide
+* MVP on Kusama Asset Hub EVM
+* Stablecoin mint/redeem flow
+* Oracle + prize logic fully tested
+* Ultra-light frontend per birdbrain.lol design
 
 ---
 
 ## 🔮 Future Work
 
-* Upgrade to native Kusama assets via precompiles
-* Expand to new synthetic indexes (e.g. ETH vs BTC, SOL vs AVAX)
-* Use decentralized oracles (e.g. DIA, Substrate-native feeds)
+* Native asset version via Asset Hub precompiles
+* Expand to new synthetic matchups (e.g. ETH vs BTC, SOL vs AVAX)
+* Plug into decentralized oracles (e.g. DIA, Substrate-native)
 
 ---
 
 ## 📜 License
 
-MIT — open to forks, memes, and governance proposals.
+MIT — memeable, forkable, fundable by governance.
 
 ---
 
 ## 🤝 Contribute
 
-We’re looking for:
+Looking for:
 
-* Solidity devs (contracts + tests)
-* Frontend engineers (Next.js + Tailwind)
-* Designers / UX tinkerers
-* Oracle runners + data nerds
-* Meme Lords & KSM degens
+* Solidity devs (with DODO/PMM interest)
+* Frontend hackers (Next.js, Tailwind)
+* Oracle runners
+* dUSD evangelists
+* Meme lords & KSM maxis
 
 ---
 
-**About:**
+## TL;DR
 
-PARITY is a synthetic tokenized bet on Kusama closing the gap on Polkadot — and rewarding those who back the underdog.
-
-
+PARITY is a synthetic, stablecoin-tradable token that lets you bet on **Kusama catching up to Polkadot** — with fees, liquidity, and final value all flowing **back to the KSM ecosystem**.
 
 
 
