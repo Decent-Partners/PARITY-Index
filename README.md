@@ -11,11 +11,11 @@ The design isolates relative value of two assets, from their market prices, crea
 
 **The project is unruggable**: 
 
-- Devs seed initial liquidity (initial KSM + matching PARITY) and send LP tokens to the Kusama Treasury.
+- Launch team seed initial liquidity (initial KSM + matching PARITY) and send LP tokens to the Kusama Treasury.
 
-Later, they can propose to:
+Later, they put proposal to the treasury to:
 
-- Reclaim a small % of LP tokens
+- Reclaim a small % of LP tokens and therefore KSM. 
 
 Why it works:
 
