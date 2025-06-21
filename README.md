@@ -1,4 +1,5 @@
-# PARITY Index — Synthetic DOT:KSM Ratio Asset on Kusama Asset Hub
+# PARITY Index — Synthetic DOT:KSM Ratio Asset
+### Launching an original defi narrative on Kusama Asset Hub
 
 **WIP frontend**: [here](https://parity.birdbrain.lol)
 
