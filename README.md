@@ -1,4 +1,5 @@
-≈
+# PARITY Index — Synthetic DOT:KSM Ratio Asset on Kusama Asset Hub
+
 **WIP frontend**: [here](https://parity.birdbrain.lol)
 
 A tokenized rivalry between **Kusama & Polkadot**, expressed as a synthetic trading asset.
@@ -34,7 +35,7 @@ Why it works:
 | Token      | `PARITY`                                     |
 | Mechanism  | Synthetic PMM (Proactive Market Maker)       |
 | Chain      | Kusama Asset Hub (EVM)                       |
-| Settles In | dUSD stablecoin, redeemable to KSM                |
+| Quoted in  | dUSD stablecoin                              | 
 | Frontend   | WIP — [birdbrain.lol](https://birdbrain.lol) |
 | Signer     | Virto Connect (EVM support)                  |
 | Status     | Prototype — contracts + UIs in development   |
@@ -55,7 +56,7 @@ Why it works:
 
 ## 🟡 Why This Benefits KSM Holders
 
-PARITY is deployed on Kusama Asset Hub, settled in KSM, and kickstarts defi on Kusama Asset Hub:
+PARITY is deployed on Kusama Asset Hub, settled in KSM, priced using dUSD stablecoin and is designed to kickstarts DeFi on Kusama Asset Hub:
 
 * **Stablecoin-based Liquidity, KSM-based Settlement**: All minting, redemptions, and trading happen against a stablecoin (e.g. dUSD) to isolate DOT\:KSM relative valuation. Behind the scenes, dUSD is backed and redeemable for KSM, ensuring KSM demand and usability.
 * **Initial LP Backed by Treasury**: The Kusama Treasury seeds liquidity (using burn redirects made possible by [WFC-437](https://kusama.subsquare.io/referenda/437)), aligning public funds with upside from PARITY adoption.
