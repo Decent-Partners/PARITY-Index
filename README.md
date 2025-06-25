@@ -36,9 +36,9 @@ Why it works:
 | Token      | `PARITY`                                     |
 | Mechanism  | Synthetic PMM (Proactive Market Maker)       |
 | Chain      | Kusama Asset Hub (EVM)                       |
-| Quoted in  | dUSD stablecoin                              | 
+| Quoted in  | bridged USDC/T from Polkadot AH              | 
 | Frontend   | WIP — [birdbrain.lol](https://birdbrain.lol) |
-| Signer     | Virto Connect (EVM support)                  |
+| Signer     | Virto Connect (wallet linking & passkey support) |
 | Status     | Prototype — contracts + UIs in development   |
 
 ---
@@ -51,7 +51,7 @@ Why it works:
 * Price increases when **Kusama closes the gap on Polkadot**
 * Isolates **relative performance**, from absolute price movement
 * **Prize Pool unlocks at 1:1** — holders can claim KSM-based payout
-* **Trades vs stablecoin**, but ultimately **settled in KSM**
+* **Trades vs stablecoin**, but ultimately **settled in KSM on Kusama AH**
 
 ---
 
@@ -171,7 +171,23 @@ function claimPrize() external {
 
 ---
 
-## 🎨 Frontend — [birdbrain.lol](https://birdbrain.lol)
+🔄 Stablecoin Quotation and Bridging
+
+    PARITY is quoted in bridged USDC or USDT (originating from Polkadot Asset Hub and bridged to Kusama Asset Hub) using a derivative token that anticipates native support via precompiles.
+
+    This provides early access to trusted dollar-based pricing without waiting for stablecoin precompiles to be live.
+
+---
+
+🔐 Universal Signing with Virto Connect
+
+    Virto Connect is the universal signer layer for PARITY on EVM-based Kusama Asset Hub.
+
+    Users can link existing wallets (MetaMask, Nova, Talisman) or authenticate with passkeys — offering the most flexible UX for web2 and web3 users alike.
+
+---
+
+## 🎨 Frontend — [WIP](https://parity.birdbrain.lol)
 
 * Simple UI, light UX, fast load
 * Big ratios, few buttons, fun toggle modes
@@ -187,7 +203,7 @@ function claimPrize() external {
 ## 💼 Development Model
 
 * Treasury-seeded LPs using redirect from burn destination
-* dUSD-stable pool enables predictable value flow
+* bridged USDC/T quoted against PARITY enables predictable value flow
 * LP tokens held by Treasury — **recoups funding through usage**
 * Dev team proposes OpenGov motions for continued funding as adoption grows
 
