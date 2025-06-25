@@ -1,13 +1,13 @@
 # PARITY Index — Synthetic DOT:KSM Ratio Asset
-### Kickstarting defi on Kusama Asset Hub with a novel betting primitive. 
+### Kickstarting defi on Kusama Asset Hub through a tokenized rivalry between **Kusama & Polkadot**, expressed as a synthetic trading asset.
 
 **WIP frontend**: [here](https://parity.birdbrain.lol)
 
-A tokenized rivalry between **Kusama & Polkadot**, expressed as a synthetic trading asset.
-
 PARITY is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Polkadot (DOT) to Kusama (KSM). 
-It’s designed to reward convergence — when Kusama gains ground on Polkadot, the PARITY token increases in value.
+It’s designed to reward convergence — when Kusama gains ground on Polkadot, the PARITY token increases in value irrespective of absolute market performance from relative performance. 
 A prize pool pays out to holders when the the two assets reach parity and the contest ends. 
+
+If somebody buys PARITY at a premium it will sell PARITY tokens to the purchaser, it will take it out of the supply ensuring that the NAV of the project goes up. 
 
 The design isolates relative value of two assets, from their market prices, creating a novel defi primitive. 
 
