@@ -13,7 +13,7 @@
 PARITY's price rises when KSM's market cap gets closer to DOT's, whether KSM or DOT move up or down in the broader market. 
 
 * **Price increases** as Kusama gains ground on Polkadot whether KSM or DOT move up or down in the broader market.
-* **Payout prize pot of KSM unlocks** when DOT\:KSM market cap ratio hits 1:1.
+* **Payout prize pot of dUSD unlocks** when DOT\:KSM market cap ratio hits 1:1.
 * **All trading occurs** in dUSD (a fully backed stablecoin), with **settlement in KSM**.
 * **Initial liquidity** is seeded by the Kusama protocol, with LP tokens held in treasury ensuring the protocol captures fee revenue.
 * **Premium capture** increases the Net Asset Value (NAV) of PARITY over time.
