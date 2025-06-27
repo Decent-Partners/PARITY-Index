@@ -35,7 +35,7 @@ This synthetic asset isolates **relative performance** from **absolute price mov
 | Market Mechanism | DODO-style Proactive Market Maker (PMM)     |
 | Oracle Feed      | Off-chain script + on-chain Oracle contract |
 | Prize Trigger    | DOT\:KSM ratio ≤ 1.0                        |
-| Prize Pot      | `KSM`, distributed pro-rata to holders      |
+| Prize Pot      | `dUSD`, distributed pro-rata to holders      |
 | Frontend         | [WIP here](https://parity.birdbrain.lol)    |
 
 ---
