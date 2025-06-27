@@ -13,7 +13,6 @@
 PARITY's price rises when KSM's market cap gets closer to DOT's, whether KSM or DOT move up or down in the broader market. 
 
 * **Price increases** as Kusama gains ground on Polkadot whether KSM or DOT move up or down in the broader market.
-* **Payout prize pot of dUSD unlocks** when DOT\:KSM market cap ratio hits 1:1.
 * **All trading occurs** in dUSD (a fully backed stablecoin), with **settlement in KSM**.
 * **Initial liquidity** is seeded by the creators, with LP tokens then sent to the treasury ensuring the protocol captures fee revenue.
 * **Premium capture** increases the Net Asset Value (NAV) of PARITY over time.
@@ -98,7 +97,7 @@ Where:
 
 * **0.25%** fee on mint/redemption
 * Collected in **dUSD**
-* Sent to the **Prize Pot**. 
+* Sent to the **Kusama treasury account**. 
 
 ```solidity
 uint256 fee = (amountIn * 25) / 10000;
@@ -108,23 +107,7 @@ uint256 fee = (amountIn * 25) / 10000;
 
 * \~**0.5%** fee on trades that deviate from oracle price
 * **Non-inflationary**, scales with usage
-* Sent to the **Prize Pot**.
-
----
-
-## 🏆 Prize Pot Mechanics
-
-* **Denominated in dUSD**
-* **One-time payout** when DOT\:KSM ratio hits or drops below **1.0**. 
-* **A fixed claim window** (e.g., 30 days) after the 1:1 trigger to ensure equitable distribution.
-* **Claim process:**
-  
-  * Burn PARITY tokens
-  * Receive pro-rata share of dUSD prize pool
-
-```solidity
-payout = (prizePoolBalance * userBalance) / totalSupply;
-```
+* Sent to the **Kusama treasury account**. 
 
 ---
 
