@@ -114,10 +114,11 @@ uint256 fee = (amountIn * 25) / 10000;
 
 ## 🏆 Prize Pot Mechanics
 
-* **Denominated in KSM**
-* **One-time payout** when DOT\:KSM ratio hits or drops below **1.0**
-* Claim process:
-
+* **Denominated in dUSD**
+* **One-time payout** when DOT\:KSM ratio hits or drops below **1.0**. 
+* **A fixed claim window** (e.g., 30 days) after the 1:1 trigger to ensure equitable distribution.
+* **Claim process:**
+  
   * Burn PARITY tokens
   * Receive pro-rata share of dUSD prize pool
 
@@ -131,13 +132,13 @@ payout = (prizePoolBalance * userBalance) / totalSupply;
 
 * **KSM-native launch** on Asset Hub
 * **Stablecoin liquidity**, KSM-based settlement
-* **Treasury-seeded LP** aligns public funding with upside
+* **Treasury owns pool revenue** aligning public funding with upside
 * **PARITY trading activity** increases demand for:
 
   * **dUSD** → strengthens DeFi layer
   * **KSM** → price support & narrative attention
 
-This is not just a token — it’s a **DeFi ignition mechanism** for the Kusama ecosystem.
+This is not just a token — it’s a **DeFi kickstart** for the Kusama ecosystem.
 
 ---
 
@@ -145,7 +146,7 @@ This is not just a token — it’s a **DeFi ignition mechanism** for the Kusama
 
 * Oracle uses **CoinGecko API** to fetch live DOT and KSM market caps.
 * Feed updates pushed via a script to an on-chain **OracleFeed.sol** contract.
-* Quoted in **bridged USDC/T or dUSD**, anticipating future **stablecoin precompiles**.
+* Quoted in **dUSD**. 
 
 ---
 
@@ -169,7 +170,7 @@ This is not just a token — it’s a **DeFi ignition mechanism** for the Kusama
 | `PARITYToken`   | ERC-20 token tracking DOT\:KSM         |
 | `OracleFeed`    | Fetches & pushes ratio data on-chain   |
 | `ParityPMMPool` | Proactive Market Maker stablecoin pool |
-| `PrizePool`     | KSM vault unlocked at parity           |
+| `PrizePool`     | dUSD vault unlocked at parity           |
 
 ---
 
@@ -188,7 +189,6 @@ This is not just a token — it’s a **DeFi ignition mechanism** for the Kusama
 * Support for **native asset PMMs** (once precompiles are live)
 * New matchups (e.g. **ETH vs BTC**, **SOL vs AVAX**)
 * Plug into **decentralized oracles** like **DIA**, **Substrate-native feeds**
-* Full **DAO governance** of prize pool and future matchups
 
 ---
 
