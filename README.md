@@ -106,6 +106,94 @@ Where:
 
 ---
 
+🧮 Net Asset Value (NAV) Mechanism
+
+The PARITY token uses a synthetic supply model combined with DODO's Proactive Market Maker (PMM) to dynamically adjust its Net Asset Value (NAV) based on user demand.
+⚙️ How It Works
+
+    When users buy PARITY tokens above the oracle-defined price, the PMM contract mints new tokens to fulfill the order.
+
+    The price premium paid by the user is removed from active circulating liquidity, rather than retained in the pool.
+
+    This results in:
+
+        📈 An increase in circulating token supply
+
+        💧 A rise in protocol-owned value due to premium capture
+
+        🧮 An effective increase in NAV per token, since more value is retained relative to the number of tokens in circulation
+
+📈 Why This Matters
+
+This mechanism creates a self-reinforcing dynamic:
+
+    More demand → more premium captured → higher NAV → stronger incentive to hold
+
+    Speculators who believe Kusama (KSM) will converge with Polkadot (DOT) in market cap can gain leveraged exposure to this outcome via PARITY
+
+🪙 Example
+
+    Let’s say 1 PARITY = $0.10 (based on the DOT:KSM ratio).
+
+    A new buyer comes in and pays $0.11 per PARITY (a 10% premium).
+
+    The protocol mints 1 PARITY and sends it to the buyer.
+
+    The $0.11 in stablecoin is captured, but only $0.10 is needed to match the oracle price.
+
+    The $0.01 premium is retained by the protocol, not paired with new PARITY.
+
+    Result: there’s now $1.11 backing 10 PARITY tokens (instead of $1.00).
+
+    → NAV = $0.111, up from $0.10.
+    
+---
+## User Flow: KSM → PARITY Exposure via Stablecoin
+
+╭────────────---╮
+│   Kusama User │
+╰─────┬──────---╯
+      │
+      ▼
+╭────────────────────────────╮
+│ Transfer KSM to Asset Hub │
+│    → becomes xcKSM        │
+╰────────┬──────────────────╯
+         │
+         ▼
+╭────────────────────────────╮
+│  Swap xcKSM for dUSD/USDC  │
+│ (via local DEX on Asset Hub│
+╰────────┬───────────────────╯
+         │
+         ▼
+╭────────────────────────────╮
+│  Interact with DODO PMM    │
+│  PARITY / stablecoin pool  │
+╰────────┬───────────────────╯
+         │
+         ▼
+╭──────────────────────────────────────────────╮
+│ User buys PARITY at premium vs oracle price  │
+│ → New PARITY minted                          │
+│ → Premium removed from pool       │
+│ → PARITY sent to user                        │
+╰────────┬─────────────────────────────────────╯
+         │
+         ▼
+╭─────────────────────────────────────╮
+│ Premium captured → NAV increases    │
+│ → Protocol vault / prize pool grows │
+╰─────────────────────────────────────╯
+
+🧾 Summary
+
+    User never needs to see PMM mechanics — just a clean buy/sell interface.
+
+    Premiums are used to increase value per PARITY token, creating a reflexive incentive structure.
+
+    KSM → Stablecoin → PARITY is the full onboarding arc.
+
 ## 💸 Fee Mechanics
 
 PARITY generates **two usage-based revenue streams**:
