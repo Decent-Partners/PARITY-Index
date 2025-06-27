@@ -56,7 +56,7 @@ This synthetic asset isolates **relative performance** from absolute price movem
 **NAV = (Total KSM & DOT Held + Vaulted dUSD) ÷ PARITY Supply**
 
 - When users mint PARITY, dUSD is used by the protocol to **purchase KSM and DOT** in the appropriate proportions based on the oracle-reported DOT:KSM ratio.
-- If PARITY is purchased at a premium (e.g., $0.11 vs. $0.10 oracle price), the excess ($0.01) is sent to the Treasury, increasing NAV without minting additional PARITY.
+- If PARITY is purchased at a premium (e.g., $0.11 vs. $0.10 oracle price), the excess ($0.01) is sent to a protocol owned reserve account, increasing NAV without minting additional PARITY.
 - The resulting KSM and DOT are held in the `BackingVault`, and vaulted dUSD is stored separately.
 - When users redeem PARITY, they receive an equivalent share of the backing KSM, DOT, and vaulted dUSD.
 
@@ -65,8 +65,8 @@ This synthetic asset isolates **relative performance** from absolute price movem
 - Oracle ratio = DOT market cap / KSM market cap = 10 (e.g., DOT = $10B, KSM = $1B).
 - Oracle prices: KSM = $20, DOT = $80.
 - User mints 1 PARITY with $11 dUSD, but oracle price is $10.
-- Protocol uses $10 to buy $6.67 DOT (0.0833 DOT) and $3.33 KSM (0.1665 KSM), sends $1 to Treasury.
-- BackingVault holds 0.0833 DOT and 0.1665 KSM, Treasury holds $1 dUSD.
+- Protocol uses $10 to buy $6.67 DOT (0.0833 DOT) and $3.33 KSM (0.1665 KSM), sends $1 to the protocol.
+- BackingVault holds 0.0833 DOT and 0.1665 KSM, protocol holds $1 dUSD.
 - NAV = ($6.67 DOT + $3.33 KSM + $1 dUSD) ÷ 1 PARITY = $11.
 - Redeeming 1 PARITY returns 0.0833 DOT, 0.1665 KSM, and $1 dUSD.
 
