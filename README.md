@@ -2,7 +2,7 @@
 
 ### A Synthetic DOT\:KSM Ratio Asset
 
-A tokenized rivalry between Kusama & Polkadot.
+A tokenised rivalry between Kusama & Polkadot.
 
 ---
 
