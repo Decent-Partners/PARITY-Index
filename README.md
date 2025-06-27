@@ -178,7 +178,7 @@ This is not just a token — it’s a **DeFi ignition mechanism** for the Kusama
 * ✅ Launch MVP on **Kusama Asset Hub**
 * ✅ Mint/Redeem flow using **dUSD**
 * ✅ Prize logic + PMM math fully tested
-* ✅ Lightweight **frontend** at `birdbrain.lol`
+* ✅ Lightweight **frontend**
 * 🚧 Governance engagement + LP reclaim motion
 
 ---
@@ -211,24 +211,11 @@ This is not just a token — it’s a **DeFi ignition mechanism** for the Kusama
 
 ---
 
-## 🤝 Contribute
-
-Looking for:
-
-* Solidity engineers (esp. with DODO, PMM, or synthetic asset experience)
-* UX designers for `birdbrain.lol`
-* DeFi meme creators
-* Governance tacticians for Kusama OpenGov
-
----
-
 ## 📜 License
 
 MIT — **Memeable. Forkable. Fundable.**
 
 ---
-
-Would you like this exported into a markdown file, a PDF, or integrated into a frontend readme format?
 
 
 
