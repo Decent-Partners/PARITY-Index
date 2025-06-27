@@ -13,7 +13,7 @@ PARITY is a synthetic ERC-20 token deployed on **Kusama Asset Hub** that tracks 
 Unlike passive tokens, PARITY is **actively backed** by KSM and DOT, and can be **redeemed at any time** for its fair share of the protocol’s holdings. The protocol dynamically adjusts its backing by **purchasing KSM and DOT** based on a live oracle feed. When users buy PARITY at a premium, the excess dUSD is captured by the protocol, increasing the Net Asset Value (NAV) per PARITY token.
 
 - 📈 **Price rises** as Kusama gains ground on Polkadot (whether KSM or DOT go up or down).
-- 💵 **PARITY is fully backed** by KSM and DOT held by the protocol Treasury.
+- 💵 **PARITY is fully backed** by KSM and DOT held by the protocol Reserve.
 - 🔁 **Redeemable 1:1** against backing assets based on current market cap ratio and vaulted dUSD.
 - 🧮 **Oracle-driven rebalancing** ensures the protocol tracks the DOT:KSM ratio over time.
 - 🧰 Initial liquidity is seeded by creators; LP tokens are sent to the Treasury to capture trading fees.
