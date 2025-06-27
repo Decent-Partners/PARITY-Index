@@ -35,7 +35,7 @@ This synthetic asset isolates **relative performance** from absolute price movem
 | Market Mechanism | Proactive Market Maker (PMM) with premium capture       |
 | Oracle Feed      | Off-chain script (CoinGecko API) + on-chain Oracle |
 | Redemption       | PARITY → KSM & DOT & dUSD (on demand)     |
-| Frontend         | WIP [https://parity.birdbrain.lol]                        |
+| Frontend         | [WIP](https://parity.birdbrain.lol)                        |
 
 ---
 
