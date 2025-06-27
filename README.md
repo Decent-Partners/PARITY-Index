@@ -106,7 +106,7 @@ Where:
 
 ---
 
-🧮 Net Asset Value (NAV) Mechanism
+## 🧮 Net Asset Value (NAV) Mechanism
 
 The PARITY token uses a synthetic supply model combined with DODO's Proactive Market Maker (PMM) to dynamically adjust its Net Asset Value (NAV) based on user demand.
 ⚙️ How It Works
@@ -123,7 +123,7 @@ The PARITY token uses a synthetic supply model combined with DODO's Proactive Ma
 
         🧮 An effective increase in NAV per token, since more value is retained relative to the number of tokens in circulation
 
-📈 Why This Matters
+## 📈 Why This Design Matters
 
 This mechanism creates a self-reinforcing dynamic:
 
@@ -148,6 +148,7 @@ This mechanism creates a self-reinforcing dynamic:
     → NAV = $0.111, up from $0.10.
     
 ---
+
 ## User Flow: KSM → PARITY Exposure via Stablecoin
 
 ╭────────────---╮
