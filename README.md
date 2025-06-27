@@ -152,49 +152,58 @@ This mechanism creates a self-reinforcing dynamic:
 
 ## User Flow: KSM → PARITY Exposure via Stablecoin
 
-╭────────────---╮
-│   Kusama User │
-╰─────┬──────---╯
-      │
-      ▼
-╭────────────────────────────╮
-│ Transfer KSM to Asset Hub │
-│    → becomes xcKSM        │
-╰────────┬──────────────────╯
-         │
-         ▼
-╭────────────────────────────╮
-│  Swap xcKSM for dUSD/USDC  │
-│ (via local DEX on Asset Hub│
-╰────────┬───────────────────╯
-         │
-         ▼
-╭────────────────────────────╮
-│  Interact with DODO PMM    │
-│  PARITY / stablecoin pool  │
-╰────────┬───────────────────╯
-         │
-         ▼
-╭──────────────────────────────────────────────╮
-│ User buys PARITY at premium vs oracle price  │
-│ → New PARITY minted                          │
-│ → Premium removed from pool       │
-│ → PARITY sent to user                        │
-╰────────┬─────────────────────────────────────╯
-         │
-         ▼
-╭─────────────────────────────────────╮
-│ Premium captured → NAV increases    │
-│ → Protocol vault / prize pool grows │
-╰─────────────────────────────────────╯
+2. 🧃 Initializing the PARITY / Stablecoin Pool
 
-🧾 Summary
+The core liquidity pool for the PARITY token is a PARITY/stablecoin pair (e.g. PARITY/dUSD or PARITY/USDC), managed via DODO's PMM architecture.
+Key Characteristics:
 
-    User never needs to see PMM mechanics — just a clean buy/sell interface.
+    One-sided bootstrap: The protocol can initialize the pool with only stablecoin reserves.
 
-    Premiums are used to increase value per PARITY token, creating a reflexive incentive structure.
+    PMM logic mints PARITY on demand based on an oracle price and a slippage curve.
 
-    KSM → Stablecoin → PARITY is the full onboarding arc.
+    Premiums paid by buyers are removed, increasing NAV over time.
+
+Pool Setup Steps:
+
+    Protocol deploys DODO PMM contracts on Asset Hub
+
+    Protocol seeds stablecoin liquidity into the PMM pool (e.g. $10,000 dUSD)
+
+    Initial oracle price is set based on the real-time market cap ratio of DOT:KSM
+
+        For example, if DOT’s mcap is 6x KSM’s, the oracle price of PARITY is 0.166
+
+    Users can now buy PARITY at a slight premium above the oracle price
+
+        New tokens are minted and sold to the user
+
+        Stablecoin premium is removed from the pool (sent to protocol treasury or prize vault)
+
+        This increases NAV per token
+
+🔁 Buy & Sell Flow (Post-Launch)
+
+Buy:
+
+    User sends stablecoin (e.g. dUSD)
+
+    Receives newly minted PARITY at a premium
+
+    Premium is extracted → NAV rises
+
+Sell:
+
+    User sends PARITY
+
+    PARITY is burned
+
+    User receives stablecoin at PMM-calculated price
+
+User never needs to see PMM mechanics — just a clean buy/sell interface.
+
+Premiums are used to increase value per PARITY token, creating a reflexive incentive structure.
+
+KSM → Stablecoin → PARITY is the full onboarding arc.
 
 ## 💸 Fee Mechanics
 
