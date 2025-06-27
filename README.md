@@ -109,7 +109,8 @@ Where:
 ## 🧮 Net Asset Value (NAV) Mechanism
 
 The PARITY token uses a synthetic supply model combined with DODO's Proactive Market Maker (PMM) to dynamically adjust its Net Asset Value (NAV) based on user demand.
-⚙️ How It Works
+
+**How It Works**
 
     When users buy PARITY tokens above the oracle-defined price, the PMM contract mints new tokens to fulfill the order.
 
