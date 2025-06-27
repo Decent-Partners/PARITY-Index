@@ -47,7 +47,6 @@ This synthetic asset isolates **relative performance** from **absolute price mov
 * Price increases as KSM gains ground against DOT.
 * Users profit from **relative convergence**, not just absolute price.
 * Designed to be **transparent, non-custodial**, and **unruggable**.
-* A **prize pool in KSM** is unlocked at full parity (1:1), redeemable by burning PARITY.
 
 ---
 
