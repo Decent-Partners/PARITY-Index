@@ -156,9 +156,9 @@ Where:
 
 ## 🔮 What’s Next?
    
-    PARITY v2: Migration to native KSM, DOT, and dUSD precompiles after Kusama Asset Hub runtime upgrade.
-    Decentralized oracle integration (e.g., DIA).
-    New synthetic matchups (e.g., ETH:BTC).
+- PARITY v2: Migration to native KSM, DOT, and dUSD precompiles after Kusama Asset Hub runtime upgrade.
+- Decentralized oracle integration (e.g., DIA).
+- New synthetic matchups (e.g., ETH:BTC).
 
 ## 🧑‍💻 Development Directory
 
