@@ -32,9 +32,17 @@ Initial liquidity for the PARITY:dUSD pool is seeded by creators, with LP tokens
 
 ## ✨ Summary
 
-**PARITY** is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT). It enables speculation on the relative performance of the two ecosystems, with active backing by wrapped KSM and DOT reserves (v1). PARITY is redeemable at any time for its share of the protocol’s holdings, including wrapped KSM, DOT, and any residual wDUSD.
+**PARITY** is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT). 
 
-The protocol proactively uses premiums from PARITY purchases to acquire more wrapped KSM and DOT, building a deeper, more liquid reserve aligned with the oracle-reported ratio. DODO-style Proactive Market Maker (PMM) contracts manage liquidity for PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools, while wrapped tokens enable smart contract composability in v1. Oracle-driven rebalancing ensures the DOT:KSM ratio is maintained. In v2, native precompiles will replace wrapped tokens for improved efficiency.
+It enables speculation on the relative performance of the two ecosystems, with active backing by wrapped KSM and DOT reserves (v1). 
+
+PARITY is redeemable at any time for its share of the protocol’s holdings, including wrapped KSM, DOT, and any residual wDUSD.
+
+The protocol proactively uses premiums from PARITY purchases to acquire more wrapped KSM and DOT, building a deeper, more liquid reserve aligned with the oracle-reported ratio. 
+
+DODO-style Proactive Market Maker (PMM) contracts manage liquidity for PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools, while wrapped tokens enable smart contract composability in v1. Oracle-driven rebalancing ensures the DOT:KSM ratio is maintained. 
+
+In v2, native precompiles will replace wrapped tokens for improved efficiency.
 
 - 📈 Price rises as Kusama gains ground on Polkadot.
 - 💵 Fully backed by wrapped KSM and DOT (v1), with minimal wDUSD.
