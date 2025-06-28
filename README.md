@@ -66,18 +66,19 @@ The protocol proactively uses premiums from PARITY purchases to acquire more wra
 
 What is PARITY?
 
-    A synthetic token tracking the DOT:KSM market cap ratio.
-    Backed by wrapped KSM and DOT (v1), with minimal wDUSD from fees or temporary holding; native KSM and DOT in v2.
-    Price increases as KSM outperforms DOT.
-    Redeemable at Net Asset Value (NAV) for wrapped KSM, DOT, and any wDUSD (v1); native assets in v2.
-    Transparent, non-custodial, and designed to be unruggable.
+- A synthetic token tracking the DOT:KSM market cap ratio.
+- Backed by wrapped KSM and DOT (v1), with minimal wDUSD from fees or temporary holding; native KSM and DOT in v2.
+- Price increases as KSM outperforms DOT.
+- Redeemable at Net Asset Value (NAV) for wrapped KSM, DOT, and any wDUSD (v1); native assets in v2.
+- Transparent, non-custodial, and designed to be unruggable.
 
 ## 🧪 Net Asset Value (NAV)
 
 **v1:**  
-NAV = (Total Wrapped KSM & DOT Held + Vaulted wDUSD) ÷ PARITY Supply  
+- NAV = (Total Wrapped KSM & DOT Held + Vaulted wDUSD) ÷ PARITY Supply  
+
 **v2:**  
-NAV = (Total Native KSM & DOT Held) ÷ PARITY Supply
+- NAV = (Total Native KSM & DOT Held) ÷ PARITY Supply
 
 - In v1: `wDUSD` (including premiums) is used to purchase wrapped KSM/DOT via PMM pools at oracle ratio.
 - In v2: native assets are used directly.
