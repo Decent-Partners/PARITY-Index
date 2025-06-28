@@ -18,15 +18,17 @@ A tokenized rivalry between Kusama & Polkadot.
   - *Improved Liquidity*: [DODO-style](https://docs.dodoex.io/en/product/pmm-algorithm) PMM pools deepen KSM:dUSD and DOT:dUSD liquidity.
   - *Greater Composability*: Wrapped KSM (v1) and native KSM (v2) enable DeFi integration.
 
+- **Problems Addressed**:
+  - *Thin Liquidity*: KSM:dUSD pool was illiquid and mispriced.
+  - *Limited Asset Interaction*: No precompiles restricted KSM’s DeFi use.
+  - *Stablecoin Over-Reliance*: Excess dUSD weakened reserves.
+  - *Centralized Management*: Manual pool management by Brale was inefficient.
+
 ## ✨ Summary
 
-**PARITY** is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT). It enables speculation on the relative performance of the two ecosystems, with active backing by wrapped KSM and DOT reserves (v1). PARITY is redeemable at any time for its share of the protocol’s holdings, including wrapped KSM and DOT.
+**PARITY** is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT). It enables speculation on the relative performance of the two ecosystems, with active backing by wrapped KSM and DOT reserves (v1). PARITY is redeemable at any time for its share of the protocol’s holdings, including wrapped KSM, DOT, and any residual wDUSD.
 
-The protocol proactively uses premiums from PARITY purchases to acquire more wrapped KSM and DOT, building a deeper, more liquid reserve aligned with the oracle-reported ratio. DODO-style Proactive Market Maker (PMM) contracts manage liquidity for PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools, while wrapped tokens enable smart contract composability in v1. 
-
-Oracle-driven rebalancing ensures the DOT:KSM ratio is maintained. 
-
-In v2, native precompiles will replace wrapped tokens for improved efficiency.
+The protocol proactively uses premiums from PARITY purchases to acquire more wrapped KSM and DOT, building a deeper, more liquid reserve aligned with the oracle-reported ratio. DODO-style Proactive Market Maker (PMM) contracts manage liquidity for PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools, while wrapped tokens enable smart contract composability in v1. Oracle-driven rebalancing ensures the DOT:KSM ratio is maintained. In v2, native precompiles will replace wrapped tokens for improved efficiency.
 
 - 📈 Price rises as Kusama gains ground on Polkadot.
 - 💵 Fully backed by wrapped KSM and DOT (v1), with minimal wDUSD.
@@ -46,7 +48,7 @@ In v2, native precompiles will replace wrapped tokens for improved efficiency.
 | **Login**           | [Virto Connect](https://demo.virto.dev/) universal login                    |
 | **Market Mechanism**| DODO-style Proactive Market Maker (PMM) with premium allocation to reserves |
 | **Oracle Feed**     | [CoinGecko API](https://www.coingecko.com/) (off-chain) + on-chain Oracle, 24-hour TWAP |
-| **Redemption**      | PARITY → Wrapped KSM & DOT & dUSD (v1); Native KSM, DOT and dUSD (v2)              |
+| **Redemption**      | PARITY → Wrapped KSM & DOT & wDUSD (v1); Native KSM & DOT (v2)              |
 | **Frontend**        | [WIP](https://parity.birdbrain.lol/)                                       |
 
 ## 🧱 Smart Contract Architecture
@@ -142,195 +144,158 @@ contract WrappedAsset is Ownable {
         return true;
     }
 }
-
 ```
+<details>
+<summary>View BackingVault.sol</summary> 
 
-# PARITY Protocol
+<details>
+<summary>View MintRedeem.sol</summary> 
+  
+<details>
+<summary>View ParityPMMPool.sol</summary> 
 
-## 🔍 Contract Viewer
-- [View `BackingVault.sol`](./contracts/BackingVault.sol)
-- [View `MintRedeem.sol`](./contracts/MintRedeem.sol)
-- [View `ParityPMMPool.sol`](./contracts/ParityPMMPool.sol)
-
----
 
 ## ⚖️ Core Concepts
 
-### What is PARITY?
+What is PARITY?
 
-- A synthetic token tracking the **DOT:KSM market cap ratio**.
-- Backed by **wrapped KSM and DOT** (v1), with minimal `wDUSD` from fees or holding; **native KSM and DOT** in v2.
-- **Price increases** as KSM outperforms DOT.
-- Redeemable at **Net Asset Value (NAV)** for backing assets.
-- Transparent, **non-custodial**, and **unruggable** by design.
-
----
+    A synthetic token tracking the DOT:KSM market cap ratio.
+    Backed by wrapped KSM and DOT (v1), with minimal wDUSD from fees or temporary holding; native KSM and DOT in v2.
+    Price increases as KSM outperforms DOT.
+    Redeemable at Net Asset Value (NAV) for wrapped KSM, DOT, and any wDUSD (v1); native assets in v2.
+    Transparent, non-custodial, and designed to be unruggable.
 
 ## 🧪 Net Asset Value (NAV)
 
-```
+NAV = (Total Wrapped KSM & DOT Held + Vaulted wDUSD) ÷ PARITY Supply (v1); (Total Native KSM & DOT Held) ÷ PARITY Supply (v2)
 
-NAV = (Total Wrapped KSM & DOT Held + Vaulted wDUSD) ÷ PARITY Supply (v1)
-OR
-(Total Native KSM & DOT Held) ÷ PARITY Supply (v2)
+    In v1, wDUSD (including premiums) is used to purchase wrapped KSM and DOT via KSM:dUSD and DOT:dUSD PMM pools, matching the oracle-reported ratio. In v2, native KSM and DOT will be used directly.
+    Premiums are fully allocated to buy additional wrapped KSM and DOT (v1), increasing NAV without minting more PARITY or holding excess wDUSD.
+    Redeeming PARITY returns a pro-rata share of wrapped KSM, DOT, and any residual wDUSD (v1); native assets in v2.
 
-```
+Example:
 
-- In v1: `wDUSD` (including premiums) is used to purchase wrapped KSM/DOT via PMM pools at oracle ratio.
-- In v2: native assets used directly.
-- Premiums boost NAV by buying more backing without increasing supply.
-- Redeeming returns pro-rata share of KSM/DOT (`+wDUSD` in v1).
-
-**Example:**
-```
-
-Oracle ratio = 10 (DOT = \$10B, KSM = \$1B)
-Oracle prices: KSM = \$20, DOT = \$80
-User mints 1 PARITY with \$11 wDUSD
-→ \$10 used to buy 0.0833 wDOT + 0.1665 wKSM
-→ \$1 premium buys extra backing in same ratio
-→ NAV = \$11
-→ Redeeming returns \~0.0875 wDOT + \~0.1748 wKSM
-
-```
-
----
+    Oracle ratio = DOT market cap / KSM market cap = 10 (DOT = $10B, KSM = $1B).
+    Oracle prices: KSM = $20, DOT = $80.
+    User mints 1 PARITY with $11 wDUSD (oracle price = $10).
+    Protocol uses $10 to buy $6.67 wDOT (0.0833 wDOT) and $3.33 wKSM (0.1665 wKSM), and $1 premium to buy additional wKSM/wDOT in the same ratio.
+    BackingVault holds ~0.0875 wDOT, ~0.1748 wKSM; NAV = $11.
+    Redeeming 1 PARITY returns ~0.0875 wDOT, ~0.1748 wKSM, and $0 wDUSD (if none held). In v2, native KSM/DOT will be returned.
 
 ## 🔁 Dynamic Rebalancing
 
-- Maintains ratio by:
-  - Buying backing with all `wDUSD` (v1) or native (v2)
-  - Redeeming PARITY for backing assets
-  - Periodically rebalancing if ratio shifts >1%
+The protocol maintains the oracle ratio by:
 
-**Example:**  
-If ratio drops to 8, protocol sells wDOT for wKSM (or DOT for KSM in v2).
+    Buying wrapped KSM and DOT with all incoming wDUSD (including premiums) via PMM pools (v1); native assets in v2.
+    Allowing redemption of PARITY for wrapped KSM, DOT, and any wDUSD (v1); native assets in v2.
+    Periodically rebalancing by swapping wrapped KSM/DOT (v1) or native KSM/DOT (v2) if the oracle ratio shifts >1% (funded by fees or minimal vaulted wDUSD).
 
----
+Example: If the ratio drops to 8, the protocol sells wDOT for wKSM (v1) or native DOT for KSM (v2) to adjust reserves to an 8:1 value ratio.
+📈 Market Mechanics: PMM
 
-## 📈 Market Mechanics: PMM
-
-DODO-style PMM contracts manage:
-- `PARITY/dUSD`, `KSM/dUSD`, and `DOT/dUSD` with single-sided liquidity
-
-```
-
+DODO-style PMM contracts manage PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools with single-sided liquidity:
+text
 Price(x) = P₀ × (1 + Κ × (x / R))
-Where:
-P₀ = Oracle price
-Κ = 0.8 (curvature constant)
-x = Trade size
-R = Pool reserve (wDUSD)
 
-````
+    P₀: Oracle price (DOT:KSM ratio, normalized to dUSD).
+    Κ: Curvature constant (0.8).
+    x: Trade size.
+    R: Pool reserve (wDUSD).
 
-### Premium Allocation:
-- PARITY always minted at oracle price
-- Full payment (including premium) buys backing via PMM
-- NAV increases — no extra PARITY minted
+Premium Allocation:
 
-### Benefits:
-- Single-sided liquidity
-- Oracle-anchored pricing
-- Low slippage
-- Capital efficient
-- Reserve-growing protocol design
+    Buying PARITY at a premium (e.g., $0.11 vs. $0.10 oracle price):
+        Mints PARITY at oracle price ($0.10).
+        Uses full $0.11 (including $0.01 premium) to buy wrapped KSM and DOT via PMM pools (v1); native assets in v2.
+        Increases NAV by deepening reserves without inflating PARITY supply.
 
-### Liquidity Provision:
-- Seeded by creators
-- LP tokens go to Treasury to earn fees
+Benefits:
 
----
+    Single-sided liquidity (wDUSD, wKSM, or wDOT in v1; native assets in v2).
+    Oracle-anchored pricing.
+    Low slippage, high capital efficiency.
+    Transforms protocol into a reserve-building agent.
 
-## 📊 NAV Dynamics
+Liquidity Provision:
 
-| Action                  | Effect on Supply | Effect on Pool Value | Effect on NAV     |
-|------------------------|------------------|-----------------------|-------------------|
-| Buy at premium         | ↑ Increases      | ↑ Increases           | ↑ Increases       |
-| Sell back to pool      | ↓ Decreases      | ↓ Decreases           | Neutral / ↓       |
-| Hold (no action)       | -                | -                     | ↑ (if others buy) |
+    Initial liquidity for PARITY:dUSD is seeded by creators, with LP tokens sent to the Treasury upon pool creation to capture trading fees.
 
----
+NAV Dynamics
+Action	Effect on Supply	Effect on Pool Value	Effect on NAV
+Buying PARITY at premium	↑ Increases	↑ Increases (via reserves)	↑ Increases
+Selling PARITY back to pool	↓ Decreases	↓ Decreases	Neutral/↓
+No trade (HODLing)	-	-	↑ (if others buy)
+🔗 Protocol Enhancements
 
-## 💸 Fees & Revenue
+The PARITY protocol has been upgraded to improve reserve backing, liquidity, and composability, addressing the challenges outlined in the Introduction:
 
-- **Mint/Redeem Fee**: 0.25% (in wDUSD) → Treasury  
-```solidity
-uint256 fee = (amountIn * 25) / 10000;
-````
+    Premium Handling:
+        Problem: Holding excess wDUSD did not strengthen reserve backing.
+        Solution: Premiums are proactively used to buy wrapped KSM and DOT (v1) or native KSM and DOT (v2) via PMM pools, matching the oracle ratio.
+        Impact: Builds deeper, more liquid reserves, improves redemption guarantees, and aligns PARITY with real KSM/DOT exposure.
+        Note: Pool depth must be monitored to minimize slippage during premium purchases.
+    Liquidity with PMM Contracts:
+        Problem: KSM:dUSD pool was thin, mispriced, and lacked single-sided liquidity; no DOT:dUSD pool existed.
+        Solution: Deploy DODO-style PMM contracts for KSM:dUSD and DOT:dUSD, supporting single-sided liquidity and oracle-based pricing.
+        Impact: Deeper liquidity, reduced slippage, and efficient price tracking.
+        Note: Contracts will be tested on Rococo testnet to ensure Kusama compatibility.
+    Decentralized Pool Management:
+        Problem: Brale manually managed KSM:dUSD, creating bottlenecks.
+        Solution: PMM contracts automate liquidity; Brale focuses on wDUSD issuance.
+        Impact: Decentralizes operations, enables continuous rebalancing.
+        Note: A transition plan will phase out Brale’s role to avoid disruptions.
+    Wrapped Tokens for Composability (v1):
+        Problem: No precompiles for native KSM, DOT, dUSD, or PARITY on Kusama Asset Hub.
+        Solution: Deploy wrapped ERC-20 tokens (WrappedAsset.sol) with custodian contracts in v1. Transition to native precompiles in v2 after Kusama Asset Hub runtime upgrade.
+        Impact: Enables DeFi composability for liquidity, trading, and rebalancing in v1; native assets improve efficiency in v2.
+        Note: Custodian contracts require security audits for v1.
 
-* **Slippage Fee**: \~0.5% for off-oracle trades → Treasury
-* **LP Fee Capture**: LP tokens go to Treasury, earn fees
-* **Premiums**: 100% used to buy backing assets → ↑ NAV
-
----
 
 ## 🔐 Virto Connect Integration
 
-* SSO for Kusama PVM ecosystem
-* Wallet support: MetaMask, Nova, Talisman, WebAuthn
-* Seamless UX across web2/web3
-
----
+    Single-sign-on for Kusama’s EVM ecosystem.
+    Supports MetaMask, Nova, Talisman, and WebAuthn (passkeys).
+    Ensures seamless UX for web2 and web3 users.
 
 ## 🔗 Oracle & Stablecoin Support
 
-* **Oracle**: CoinGecko API → on-chain every 5 min, 24h TWAP
-
-  * DIA integration coming
-* **Stablecoin**: `wDUSD` in v1, `dUSD` (native) in v2
-
-  * Bridged USDC fallback
-* ⚠️ Oracle reliability is critical — decentralised options in roadmap
-
----
+    Oracle Feed: CoinGecko API, pushed on-chain every 5 minutes, with 24-hour TWAP smoothing. Future DIA integration.
+    Stablecoin: wDUSD (collateralized) in v1, native dUSD in v2; bridged USDC as fallback.
+    Note: Oracle reliability is critical; decentralized alternatives are planned.
 
 ## 🧠 Project Goals
 
-✅ Launch MVP on Kusama Asset Hub
-🚧 Oracle-driven minting with premium allocation
-🚧 Dynamic BackingVault rebalancing
-🚧 PMM pools for all pairs
-🚧 Basic frontend for mint/redeem/trade
-🚧 Governance for Treasury LP management
+    ✅ Launch MVP on Kusama Asset Hub (v1).
+    ✅ Oracle-driven minting with premium allocation to reserves.
+    ✅ Dynamic rebalancing for BackingVault.
+    ✅ PMM pools for PARITY/dUSD, KSM:dUSD, DOT:dUSD.
+    🚧 Basic frontend for mint/redeem/trade.
+    🚧 Governance for Treasury-owned LP.
 
----
+## 🔮 What’s Next?
 
-## 🔮 Where does PARITY go?
-
-* **PARITY v2**: Native precompile migration post-Kusama upgrade
-* Decentralised oracle (DIA)
-* * New synthetic matchups (e.g. ETH\:BTC and then other rivalries).
-
----
+    Native DOT bridging and redemption.
+    New synthetic matchups (e.g., ETH:BTC).
+    Decentralized oracle integration (e.g., DIA).
+    PARITY v2: Migration to native KSM, DOT, and dUSD precompiles after Kusama Asset Hub runtime upgrade.
 
 ## 🧑‍💻 Development Directory
-
-```
-contracts/
-├── PARITYToken.sol
-├── WrappedAsset.sol
-├── OracleFeed.sol
-├── ParityPMMPool.sol
-├── BackingVault.sol
-└── MintRedeem.sol
-
-frontend/
-├── public/
-├── pages/
-└── components/
-
-scripts/
-└── updateOracle.ts
-
-README.md
-```
-
----
+text
+├── contracts/
+│   ├── PARITYToken.sol
+│   ├── WrappedAsset.sol
+│   ├── OracleFeed.sol
+│   ├── ParityPMMPool.sol
+│   ├── BackingVault.sol
+│   └── MintRedeem.sol
+├── frontend/
+│   ├── public/
+│   ├── pages/
+│   └── components/
+├── scripts/
+│   └── updateOracle.ts
+└── README.md
 
 ## 📜 License
 
-**MIT** — Memeable. Forkable. Fundable.
-
-```
-
+MIT — Memeable. Forkable. Fundable.
