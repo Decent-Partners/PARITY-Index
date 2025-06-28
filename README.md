@@ -14,6 +14,8 @@ Premiums from PARITY purchases are used to buy more KSM and DOT, building deeper
 
 Initial liquidity for the PARITY:dUSD pool is seeded by creators, with LP tokens sent to the Treasury upon pool creation to capture trading fees.
 
+Transparent, non-custodial, and designed to be unruggable.
+
 - **PARITY v1 and v2 Roadmap**:
   - *PARITY v1*: Uses wrapped ERC-20 tokens for KSM, DOT, dUSD, and PARITY due to missing precompiles on Kusama Asset Hub.
   - *PARITY v2*: Will transition to native KSM, DOT, and dUSD after a future runtime upgrade enables precompiles, improving efficiency.
@@ -75,16 +77,6 @@ In v2, native precompiles will replace wrapped tokens for improved efficiency.
 | `ParityPMMPool.sol`   | Manages PARITY/dUSD, KSM:dUSD, DOT:dUSD pools with PMM               |
 | `BackingVault.sol`    | Stores wrapped KSM, DOT, and minimal wDUSD (v1); native assets (v2)   |
 | `MintRedeem.sol`      | Handles minting/redemption of PARITY                                 |
-
-## ⚖️ Core Concepts
-
-What is PARITY?
-
-- A synthetic token tracking the DOT:KSM market cap ratio.
-- Backed by wrapped KSM and DOT (v1), with minimal wDUSD from fees or temporary holding; native KSM and DOT in v2.
-- Price increases as KSM outperforms DOT.
-- Redeemable at Net Asset Value (NAV) for wrapped KSM, DOT, and any wDUSD (v1); native assets in v2.
-- Transparent, non-custodial, and designed to be unruggable.
 
 ## 🧪 Net Asset Value (NAV)
 
