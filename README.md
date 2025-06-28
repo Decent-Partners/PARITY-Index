@@ -111,28 +111,29 @@ Price(x) = P₀ × (1 + Κ × (x / R))
 
 Premium Allocation:
 
-    Buying PARITY at a premium (e.g., $0.11 vs. $0.10 oracle price):
-        Mints PARITY at oracle price ($0.10).
-        Uses full $0.11 (including $0.01 premium) to buy wrapped KSM and DOT via PMM pools (v1); native assets in v2.
-        Increases NAV by deepening reserves without inflating PARITY supply.
+  Buying PARITY at a premium (e.g., $0.11 vs. $0.10 oracle price):
+  Mints PARITY at oracle price ($0.10).
+  Uses full $0.11 (including $0.01 premium) to buy wrapped KSM and DOT via PMM pools (v1); native assets in v2.
+  Increases NAV by deepening reserves without inflating PARITY supply.
 
 Benefits:
 
-    Single-sided liquidity (wDUSD, wKSM, or wDOT in v1; native assets in v2).
-    Oracle-anchored pricing.
-    Low slippage, high capital efficiency.
-    Transforms protocol into a reserve-building agent.
+  Single-sided liquidity (wDUSD, wKSM, or wDOT in v1; native assets in v2).
+  Oracle-anchored pricing.
+  Low slippage, high capital efficiency.
+  Transforms protocol into a reserve-building agent.
 
 Liquidity Provision:
 
-    Initial liquidity for PARITY:dUSD is seeded by creators, with LP tokens sent to the Treasury upon pool creation to capture trading fees.
+  Initial liquidity for PARITY:dUSD is seeded by creators, with LP tokens sent to the Treasury upon pool creation to capture trading fees.
 
-NAV Dynamics
-Action	Effect on Supply	Effect on Pool Value	Effect on NAV
-Buying PARITY at premium	↑ Increases	↑ Increases (via reserves)	↑ Increases
-Selling PARITY back to pool	↓ Decreases	↓ Decreases	Neutral/↓
-No trade (HODLing)	-	-	↑ (if others buy)
-🔗 Protocol Enhancements
+## 📊 NAV Dynamics
+
+| Action                  | Effect on Supply | Effect on Pool Value | Effect on NAV     |
+|------------------------|------------------|-----------------------|-------------------|
+| Buy at premium         | ↑ Increases      | ↑ Increases           | ↑ Increases       |
+| Sell back to pool      | ↓ Decreases      | ↓ Decreases           | Neutral / ↓       |
+| Hold (no action)       | -                | -                     | ↑ (if others buy) |
 
 ## 🔐 Virto Connect Integration
 
