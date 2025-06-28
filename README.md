@@ -62,99 +62,6 @@ The protocol proactively uses premiums from PARITY purchases to acquire more wra
 | `BackingVault.sol`    | Stores wrapped KSM, DOT, and minimal wDUSD (v1); native assets (v2)   |
 | `MintRedeem.sol`      | Handles minting/redemption of PARITY                                 |
 
-### Smart Contracts
-
-The smart contracts below support the protocol, including proactive premium allocation to wrapped KSM and DOT reserves. These are designed for v1, with v2 expected to adapt to native precompiles. Click to expand each contract. *Note*: These are best viewed on GitHub, where `<details>` tags render as collapsible sections.
-
-<details>
-<summary>View WrappedAsset.sol</summary>
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-contract WrappedAsset is Ownable {
-    string public name;
-    string public symbol;
-    uint8 public decimals = 18;
-    uint256 public totalSupply;
-    
-    mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
-    
-    IERC20 public nativeAsset; // Native KSM, DOT, or dUSD
-    uint256 public reserve; // Native assets held
-    
-    event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(address indexed owner, address indexed spender, uint256 value);
-    event Deposit(address indexed user, uint256 nativeAmount, uint256 wrappedAmount);
-    event Withdraw(address indexed user, uint256 wrappedAmount, uint256 nativeAmount);
-
-    constructor(string memory _name, string memory _symbol, address _nativeAsset) {
-        name = _name;
-        symbol = _symbol;
-        nativeAsset = IERC20(_nativeAsset);
-    }
-
-    function deposit(uint256 amount) external {
-        require(amount > 0, "Invalid amount");
-        require(nativeAsset.transferFrom(msg.sender, address(this), amount), "Transfer failed");
-        balanceOf[msg.sender] += amount;
-        totalSupply += amount;
-        reserve += amount;
-        emit Deposit(msg.sender, amount, amount);
-        emit Transfer(address(0), msg.sender, amount);
-    }
-
-    function withdraw(uint256 amount) external {
-        require(amount > 0, "Invalid amount");
-        require(balanceOf[msg.sender] >= amount, "Insufficient balance");
-        balanceOf[msg.sender] -= amount;
-        totalSupply -= amount;
-        reserve -= amount;
-        require(nativeAsset.transfer(msg.sender, amount), "Transfer failed");
-        emit Withdraw(msg.sender, amount, amount);
-        emit Transfer(msg.sender, address(0), amount);
-    }
-
-    function approve(address spender, uint256 amount) external returns (bool) {
-        allowance[msg.sender][spender] = amount;
-        emit Approval(msg.sender, spender, amount);
-        return true;
-    }
-
-    function transfer(address to, uint256 amount) external returns (bool) {
-        require(balanceOf[msg.sender] >= amount, "Insufficient balance");
-        balanceOf[msg.sender] -= amount;
-        balanceOf[to] += amount;
-        emit Transfer(msg.sender, to, amount);
-        return true;
-    }
-
-    function transferFrom(address from, address to, uint256 amount) external returns (bool) {
-        require(balanceOf[from] >= amount, "Insufficient balance");
-        require(allowance[from][msg.sender] >= amount, "Insufficient allowance");
-        balanceOf[from] -= amount;
-        balanceOf[to] += amount;
-        allowance[from][msg.sender] -= amount;
-        emit Transfer(from, to, amount);
-        return true;
-    }
-}
-```
-<details>
-<summary>View BackingVault.sol</summary> 
-
-<details>
-<summary>View MintRedeem.sol</summary> 
-  
-<details>
-<summary>View ParityPMMPool.sol</summary> 
-
-
 ## ⚖️ Core Concepts
 
 What is PARITY?
@@ -226,30 +133,6 @@ Buying PARITY at premium	↑ Increases	↑ Increases (via reserves)	↑ Increase
 Selling PARITY back to pool	↓ Decreases	↓ Decreases	Neutral/↓
 No trade (HODLing)	-	-	↑ (if others buy)
 🔗 Protocol Enhancements
-
-The PARITY protocol has been upgraded to improve reserve backing, liquidity, and composability, addressing the challenges outlined in the Introduction:
-
-    Premium Handling:
-        Problem: Holding excess wDUSD did not strengthen reserve backing.
-        Solution: Premiums are proactively used to buy wrapped KSM and DOT (v1) or native KSM and DOT (v2) via PMM pools, matching the oracle ratio.
-        Impact: Builds deeper, more liquid reserves, improves redemption guarantees, and aligns PARITY with real KSM/DOT exposure.
-        Note: Pool depth must be monitored to minimize slippage during premium purchases.
-    Liquidity with PMM Contracts:
-        Problem: KSM:dUSD pool was thin, mispriced, and lacked single-sided liquidity; no DOT:dUSD pool existed.
-        Solution: Deploy DODO-style PMM contracts for KSM:dUSD and DOT:dUSD, supporting single-sided liquidity and oracle-based pricing.
-        Impact: Deeper liquidity, reduced slippage, and efficient price tracking.
-        Note: Contracts will be tested on Rococo testnet to ensure Kusama compatibility.
-    Decentralized Pool Management:
-        Problem: Brale manually managed KSM:dUSD, creating bottlenecks.
-        Solution: PMM contracts automate liquidity; Brale focuses on wDUSD issuance.
-        Impact: Decentralizes operations, enables continuous rebalancing.
-        Note: A transition plan will phase out Brale’s role to avoid disruptions.
-    Wrapped Tokens for Composability (v1):
-        Problem: No precompiles for native KSM, DOT, dUSD, or PARITY on Kusama Asset Hub.
-        Solution: Deploy wrapped ERC-20 tokens (WrappedAsset.sol) with custodian contracts in v1. Transition to native precompiles in v2 after Kusama Asset Hub runtime upgrade.
-        Impact: Enables DeFi composability for liquidity, trading, and rebalancing in v1; native assets improve efficiency in v2.
-        Note: Custodian contracts require security audits for v1.
-
 
 ## 🔐 Virto Connect Integration
 
