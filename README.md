@@ -74,67 +74,79 @@ What is PARITY?
 
 ## 🧪 Net Asset Value (NAV)
 
-NAV = (Total Wrapped KSM & DOT Held + Vaulted wDUSD) ÷ PARITY Supply (v1); (Total Native KSM & DOT Held) ÷ PARITY Supply (v2)
+**v1:**  
+NAV = (Total Wrapped KSM & DOT Held + Vaulted wDUSD) ÷ PARITY Supply  
+**v2:**  
+NAV = (Total Native KSM & DOT Held) ÷ PARITY Supply
 
-    In v1, wDUSD (including premiums) is used to purchase wrapped KSM and DOT via KSM:dUSD and DOT:dUSD PMM pools, matching the oracle-reported ratio. In v2, native KSM and DOT will be used directly.
-    Premiums are fully allocated to buy additional wrapped KSM and DOT (v1), increasing NAV without minting more PARITY or holding excess wDUSD.
-    Redeeming PARITY returns a pro-rata share of wrapped KSM, DOT, and any residual wDUSD (v1); native assets in v2.
+- In v1: `wDUSD` (including premiums) is used to purchase wrapped KSM/DOT via PMM pools at oracle ratio.
+- In v2: native assets are used directly.
+- Premiums boost NAV by buying more backing without increasing supply.
+- Redeeming returns pro-rata share of KSM/DOT (plus `wDUSD` in v1).
 
-Example:
+**Example:**
 
-    Oracle ratio = DOT market cap / KSM market cap = 10 (DOT = $10B, KSM = $1B).
-    Oracle prices: KSM = $20, DOT = $80.
-    User mints 1 PARITY with $11 wDUSD (oracle price = $10).
-    Protocol uses $10 to buy $6.67 wDOT (0.0833 wDOT) and $3.33 wKSM (0.1665 wKSM), and $1 premium to buy additional wKSM/wDOT in the same ratio.
-    BackingVault holds ~0.0875 wDOT, ~0.1748 wKSM; NAV = $11.
-    Redeeming 1 PARITY returns ~0.0875 wDOT, ~0.1748 wKSM, and $0 wDUSD (if none held). In v2, native KSM/DOT will be returned.
+- Oracle ratio = 10 (DOT = $10B, KSM = $1B)  
+- Oracle prices: KSM = $20, DOT = $80  
+- User mints 1 PARITY with $11 wDUSD  
+  → $10 used to buy 0.0833 wDOT + 0.1665 wKSM  
+  → $1 premium buys extra backing in same ratio  
+  → NAV = $11  
+  → Redeeming returns ~0.0875 wDOT + ~0.1748 wKSM
+
+---
 
 ## 🔁 Dynamic Rebalancing
 
-The protocol maintains the oracle ratio by:
+- Maintains backing ratio by:
+  - Buying backing with all `wDUSD` (v1) or native assets (v2)
+  - Redeeming PARITY for backing assets
+  - Periodic rebalancing if ratio shifts >1%
 
-    Buying wrapped KSM and DOT with all incoming wDUSD (including premiums) via PMM pools (v1); native assets in v2.
-    Allowing redemption of PARITY for wrapped KSM, DOT, and any wDUSD (v1); native assets in v2.
-    Periodically rebalancing by swapping wrapped KSM/DOT (v1) or native KSM/DOT (v2) if the oracle ratio shifts >1% (funded by fees or minimal vaulted wDUSD).
+**Example:**  
+If ratio drops to 8, protocol sells wDOT for wKSM (or DOT for KSM in v2).
 
-Example: If the ratio drops to 8, the protocol sells wDOT for wKSM (v1) or native DOT for KSM (v2) to adjust reserves to an 8:1 value ratio.
-📈 Market Mechanics: PMM
+---
 
-DODO-style PMM contracts manage PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools with single-sided liquidity:
-text
-Price(x) = P₀ × (1 + Κ × (x / R))
+## 📈 Market Mechanics: PMM
 
-    P₀: Oracle price (DOT:KSM ratio, normalized to dUSD).
-    Κ: Curvature constant (0.8).
-    x: Trade size.
-    R: Pool reserve (wDUSD).
+DODO-style PMM contracts manage:
+- `PARITY/dUSD`, `KSM/dUSD`, and `DOT/dUSD` with single-sided liquidity
 
-Premium Allocation:
+**Price(x)** = P₀ × (1 + Κ × (x / R))  
+Where:  
+- P₀ = Oracle price  
+- Κ = 0.8 (curvature constant)  
+- x = Trade size  
+- R = Pool reserve (wDUSD)
 
-  Buying PARITY at a premium (e.g., $0.11 vs. $0.10 oracle price):
-  Mints PARITY at oracle price ($0.10).
-  Uses full $0.11 (including $0.01 premium) to buy wrapped KSM and DOT via PMM pools (v1); native assets in v2.
-  Increases NAV by deepening reserves without inflating PARITY supply.
+### Premium Allocation:
+- PARITY always minted at oracle price
+- Full payment (including premium) buys backing via PMM
+- NAV increases — no extra PARITY minted
 
-Benefits:
+### Benefits:
+- Single-sided liquidity
+- Oracle-anchored pricing
+- Low slippage
+- Capital efficient
+- Reserve-growing protocol design
 
-  Single-sided liquidity (wDUSD, wKSM, or wDOT in v1; native assets in v2).
-  Oracle-anchored pricing.
-  Low slippage, high capital efficiency.
-  Transforms protocol into a reserve-building agent.
+### Liquidity Provision:
+- Seeded by creators
+- LP tokens go to Treasury to earn fees
 
-Liquidity Provision:
-
-  Initial liquidity for PARITY:dUSD is seeded by creators, with LP tokens sent to the Treasury upon pool creation to capture trading fees.
+---
 
 ## 📊 NAV Dynamics
 
-| Action                  | Effect on Supply | Effect on Pool Value | Effect on NAV     |
-|------------------------|------------------|-----------------------|-------------------|
-| Buy at premium         | ↑ Increases      | ↑ Increases           | ↑ Increases       |
-| Sell back to pool      | ↓ Decreases      | ↓ Decreases           | Neutral / ↓       |
-| Hold (no action)       | -                | -                     | ↑ (if others buy) |
+| Action            | Effect on Supply | Effect on Pool Value | Effect on NAV     |
+|-------------------|------------------|-----------------------|-------------------|
+| Buy at premium    | ↑ Increases      | ↑ Increases           | ↑ Increases       |
+| Sell back to pool | ↓ Decreases      | ↓ Decreases           | Neutral / ↓       |
+| Hold (no action)  | -                | -                     | ↑ (if others buy) |
 
+---
 ## 🔐 Virto Connect Integration
 
     Single-sign-on for Kusama’s EVM ecosystem.
