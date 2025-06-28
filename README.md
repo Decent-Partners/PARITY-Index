@@ -150,15 +150,9 @@ Where:
 ---
 ## 🔐 Virto Connect Integration
 
-    Single-sign-on for Kusama’s EVM ecosystem.
-    Supports MetaMask, Nova, Talisman, and WebAuthn (passkeys).
-    Ensures seamless UX for web2 and web3 users.
-
-## 🔗 Oracle & Stablecoin Support
-
-    Oracle Feed: CoinGecko API, pushed on-chain every 5 minutes, with 24-hour TWAP smoothing. Future DIA integration.
-    Stablecoin: wDUSD (collateralized) in v1, native dUSD in v2; bridged USDC as fallback.
-    Note: Oracle reliability is critical; decentralized alternatives are planned.
+- Single-sign-on for Kusama’s EVM ecosystem.
+- Supports MetaMask, Nova, Talisman, and WebAuthn (passkeys).
+- Ensures seamless UX for web2 and web3 users.
 
 ## 🔮 What’s Next?
    
@@ -167,21 +161,25 @@ Where:
     New synthetic matchups (e.g., ETH:BTC).
 
 ## 🧑‍💻 Development Directory
-text
+
+```markdown
+
 ├── contracts/
-│   ├── PARITYToken.sol
-│   ├── WrappedAsset.sol
-│   ├── OracleFeed.sol
-│   ├── ParityPMMPool.sol
-│   ├── BackingVault.sol
-│   └── MintRedeem.sol
+│   ├── PARITYToken.sol        # ERC-20 PARITY token logic
+│   ├── WrappedAsset.sol       # Wrapper contracts for native KSM/DOT
+│   ├── OracleFeed.sol         # Oracle price feed integration
+│   ├── ParityPMMPool.sol      # DODO-style PMM for backing/assets
+│   ├── BackingVault.sol       # Vault to hold wrapped/native assets
+│   └── MintRedeem.sol         # Minting and redeeming logic for PARITY
 ├── frontend/
-│   ├── public/
-│   ├── pages/
-│   └── components/
+│   ├── public/                # Static assets
+│   ├── pages/                 # Next.js or similar frontend routing
+│   └── components/            # Reusable UI components
 ├── scripts/
-│   └── updateOracle.ts
-└── README.md
+│   └── updateOracle.ts        # Script to update oracle prices on-chain
+└── README.md                  # Project documentation
+
+```
 
 ## 📜 License
 
