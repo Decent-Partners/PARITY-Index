@@ -159,21 +159,11 @@ Where:
     Stablecoin: wDUSD (collateralized) in v1, native dUSD in v2; bridged USDC as fallback.
     Note: Oracle reliability is critical; decentralized alternatives are planned.
 
-## 🧠 Project Goals
-
-    ✅ Launch MVP on Kusama Asset Hub (v1).
-    ✅ Oracle-driven minting with premium allocation to reserves.
-    ✅ Dynamic rebalancing for BackingVault.
-    ✅ PMM pools for PARITY/dUSD, KSM:dUSD, DOT:dUSD.
-    🚧 Basic frontend for mint/redeem/trade.
-    🚧 Governance for Treasury-owned LP.
-
 ## 🔮 What’s Next?
-
-    Native DOT bridging and redemption.
-    New synthetic matchups (e.g., ETH:BTC).
-    Decentralized oracle integration (e.g., DIA).
+   
     PARITY v2: Migration to native KSM, DOT, and dUSD precompiles after Kusama Asset Hub runtime upgrade.
+    Decentralized oracle integration (e.g., DIA).
+    New synthetic matchups (e.g., ETH:BTC).
 
 ## 🧑‍💻 Development Directory
 text
