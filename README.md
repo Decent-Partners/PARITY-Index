@@ -143,9 +143,8 @@ contract WrappedAsset is Ownable {
     }
 }
 
-Here's your content reformatted in Markdown for a `README.md`:
+```
 
-```markdown
 # PARITY Protocol
 
 ## 🔍 Contract Viewer
