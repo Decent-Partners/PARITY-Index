@@ -23,14 +23,8 @@ Transparent, non-custodial, and designed to be unruggable.
 - **Benefits for Kusama and KSM Holders**:
   - *Increased KSM Demand*: Premiums buy wrapped KSM, boosting demand.
   - *Enhanced Ecosystem Growth*: A DeFi primitive attracts developers and users, increasing network activity.
-  - *Improved Liquidity*: [DODO-style](https://docs.dodoex.io/en/product/pmm-algorithm) PMM pools deepen KSM:dUSD and DOT:dUSD liquidity.
+  - *Improved Liquidity*: [DODO-style](https://docs.dodoex.io/en/product/pmm-algorithm) PMM pools deepen KSM:dUSD and DOT:dUSD liquidity and address 'AssetConversionPallet' limitations.
   - *Greater Composability*: Wrapped KSM (v1) and native KSM (v2) enable DeFi integration.
-
-- **Problems Addressed**:
-  - *Thin Liquidity*: KSM:dUSD pool was illiquid and mispriced.
-  - *Limited Asset Interaction*: No precompiles restricted KSM’s DeFi use.
-  - *Stablecoin Over-Reliance*: Excess dUSD weakened reserves.
-  - *Centralized Management*: Manual pool management by Brale was inefficient.
 
 ## ✨ Summary
 
