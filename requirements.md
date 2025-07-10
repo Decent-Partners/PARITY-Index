@@ -50,8 +50,8 @@ The following is prioritised using the [MoSCoW method](https://en.wikipedia.org/
 - Retro style interface [see](https://parity.birdbrain.lol).
 - UI to enable users to buy (mint) PARITY and sell (burn) PARITY.
  - Selling PARITY enables the holder to redeem the underling KSM+DOT in proportion to their holdings.
-- UI to surface key data, analysis and news related to the Kusama vs Polkadot tokenised rivalry.
- - Chart showing current and historical ratio.
+- Basic UI with chart showing current and historical ratio.
+- Documentation
 
 ### Should have 
 
