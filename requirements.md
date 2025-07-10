@@ -2,7 +2,7 @@
 
 PARITY is an asset backed meme token that tracks the relative market caps of Kusama and Polkadot expressed as a ratio.
 
-The Net Asset Value (NAV) at any moment = Total KSM & DOT held ÷ PARITY supply.
+The Net Asset Value ([NAV](https://www.reddit.com/r/MSTR/comments/1fzgwk2/a_nav_explanation/)) at any moment = Total KSM & DOT held ÷ PARITY supply.
 
 ## User journeys 
 
