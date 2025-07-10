@@ -24,7 +24,7 @@ The protocol burns PARITY reducing the supply of tokens and the user redeems the
 
 Over time as PARITY is bought/minted and sold/burned the NAV increases rewarding early holders.
 
-Protocol fees generated are used to burn KSM by sending to a [new address](https://kusama.subsquare.io/referenda/539) that reduces the circulating supply of KSM.
+Protocol fees generated are used to burn KSM by sending to a [new address](https://kusama.subsquare.io/referenda/539) that reduces Kusama's circulating supply.
 
 This burning of KSM feeds back into the Kusama vs Polkadot narrative and increases demand for PARITY which buys more KSM and sells DOT (if market cap ratio reduces) and also increases the NAV, which then creates more fomo, this then generates more fees, which burns more KSM which increases the meme of Kusama catching Polkadot in a recursive design.  
 
