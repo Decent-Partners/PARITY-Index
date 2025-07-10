@@ -2,6 +2,8 @@
 
 PARITY is an asset backed meme token that tracks the relative market caps of Kusama and Polkadot expressed as a ratio.
 
+The Net Asset Value (NAV) at any moment = Total KSM & DOT held ÷ PARITY supply.
+
 ## User journeys 
 
 Users buy newly minted PARITY from the protocol with a stablecoin (dUSD). 
