@@ -1,12 +1,12 @@
 # PARITY Index
 
-A Synthetic DOT:KSM Ratio Asset
+A fully backed DOT:KSM Ratio Asset
 
 A tokenized rivalry between Kusama & Polkadot.
 
 ## 🚀 Introduction
 
-**PARITY** is a synthetic ERC-20 token on [Kusama Asset Hub](https://kusama.network/) that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT), enabling speculation on their convergence. 
+**PARITY** is a ERC-20 token on [Kusama Asset Hub](https://kusama.network/) that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT), enabling speculation on their convergence. 
 
 Unlike passive tokens, PARITY is actively backed by wrapped KSM and DOT (v1), redeemable at any time for its share of the protocol’s reserves. 
 
