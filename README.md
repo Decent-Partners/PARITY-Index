@@ -14,13 +14,13 @@ Users can mint tokens using KSM, DOT, or dUSD, creating a synthetic asset that t
 
 The project evolves prediction markets, using economic incentives to align collective interest, with the potential to create any ratio market based on independent and publicly verifiable data feeds:
 
-    Crypto centric: Bitcoin vs Gold, Ethereum vs Bitcoin, Solana vs Ethereum
-    Traditional markets: Microsoft vs Apple market cap, Intel vs Nvidia market cap
-    Sports: Team A’s performance vs Team B’s performance
-    Film: Movie A ticket sales vs Movie B’s ticket sales
-    Music: Artist A streams vs Artist B’s streams
-    Platform: Streaming platform A subscribers vs Streaming platform B subscribers
-    Politics: Political party A members vs Political party B members
+- Crypto centric: Bitcoin vs Gold, Ethereum vs Bitcoin, Solana vs Ethereum
+- Traditional markets: Microsoft vs Apple market cap, Intel vs Nvidia market cap
+- Sports: Team A’s performance vs Team B’s performance
+- Film: Movie A ticket sales vs Movie B’s ticket sales
+- Music: Artist A streams vs Artist B’s streams
+- Platform: Streaming platform A subscribers vs Streaming platform B subscribers
+- Politics: Political party A members vs Political party B members
 
 | Feature | Traditional Prediction Markets (Polymarket, Kalshi, Azuro, Omen, etc.) | Perpetual Synthetics (GMX, Gains Network, Synthetix) | Ratio / Index Tokens (Index Coop, BasketDAO, old Set Protocol) | PARITY Ratio Markets (Kusama vs Polkadot, etc.) |
 |--------|--------------------------------------------------------------------------|-------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------|
