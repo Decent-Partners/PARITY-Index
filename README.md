@@ -22,6 +22,8 @@ The project evolves prediction markets, using economic incentives to align colle
 - Platform: Streaming platform A subscribers vs Streaming platform B subscribers
 - Politics: Political party A members vs Political party B members
 
+## 🚀 RATIO MARKETS vs PREDICTION MARKETS
+
 | Feature | Traditional Prediction Markets (Polymarket, Kalshi, Azuro, Omen, etc.) | Perpetual Synthetics (GMX, Gains Network, Synthetix) | Ratio / Index Tokens (Index Coop, BasketDAO, old Set Protocol) | PARITY Ratio Markets (Kusama vs Polkadot, etc.) |
 |--------|--------------------------------------------------------------------------|-------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------|
 | **What you are long/short** | Probability of a discrete event (Yes/No or scalar outcome) | Absolute price direction of an asset | Basket of assets (absolute performance) | Relative performance of two rivals only |
