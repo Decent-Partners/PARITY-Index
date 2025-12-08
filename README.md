@@ -2,17 +2,43 @@
 
 A fully backed DOT:KSM Ratio Asset
 
-A tokenized rivalry between Kusama & Polkadot.
+A tokenised rivalry between Kusama & Polkadot.
 
 ## 🚀 Introduction
 
-**PARITY** is a ERC-20 token on [Kusama Asset Hub](https://kusama.network/) that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT), enabling speculation on their convergence. 
+PARITY INDEX is a proof of concept built on top of PARITY PROTOCOL a novel decentralised finance (DeFi) system enabling the tokenisation of on chain rivalries through ratio markets, using financial engineering to empower David vs Goliath competitions.
 
-Unlike passive tokens, PARITY is actively backed by wrapped KSM and DOT (v1), redeemable at any time for its share of the protocol’s reserves. 
+The first ratio market to launch on the protocol is Kusama vs Polkadot and the PARITY token (this will likely be $KVP ticker when launched on mainnet). The rivalry is captured in real-time through their relative market caps, which is the current ‘price’ to mint or burn the token.
+
+Users can mint tokens using KSM, DOT, or dUSD, creating a synthetic asset that tracks relative performance — isolated from broader market movements. The protocol features a dynamic fee mechanism that funds a NAV Vault for holder bonuses to reward early adopters and hodlers and a multi-oracle consensus system for ingesting data feeds.
+
+The project evolves prediction markets, using economic incentives to align collective interest, with the potential to create any ratio market based on independent and publicly verifiable data feeds:
+
+    Crypto centric: Bitcoin vs Gold, Ethereum vs Bitcoin, Solana vs Ethereum
+    Traditional markets: Microsoft vs Apple market cap, Intel vs Nvidia market cap
+    Sports: Team A’s performance vs Team B’s performance
+    Film: Movie A ticket sales vs Movie B’s ticket sales
+    Music: Artist A streams vs Artist B’s streams
+    Platform: Streaming platform A subscribers vs Streaming platform B subscribers
+    Politics: Political party A members vs Political party B members
+
+| Feature | Traditional Prediction Markets (Polymarket, Kalshi, Azuro, Omen, etc.) | Perpetual Synthetics (GMX, Gains Network, Synthetix) | Ratio / Index Tokens (Index Coop, BasketDAO, old Set Protocol) | PARITY Ratio Markets (Kusama vs Polkadot, etc.) |
+|--------|--------------------------------------------------------------------------|-------------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------|
+| **What you are long/short** | Probability of a discrete event (Yes/No or scalar outcome) | Absolute price direction of an asset | Basket of assets (absolute performance) | Relative performance of two rivals only |
+| **Market-direction neutrality** | No (crypto-wide moves affect outcome prices) | No | No | Yes – 100% isolated from broader market |
+| **Expiry / settlement** | Fixed event end date → one-time payout | None (perpetual) | None | None – perpetual, real-time price |
+| **Resolution mechanism** | Oracle or jury at event close | Price feed | Rebalancing + price feeds | Continuous oracle consensus on ratio |
+| **Holding incentive** | None (pure speculation) | Funding rate arbitrage | Sometimes small streaming fees | Strong – NAV Vault bonuses that can exceed entry cost |
+| **Early-adopter / loyalty advantage** | None | None | Rare | Yes – dynamic burn rate, lower NAV take the longer you hold |
+| **Composability** | Low (PM tokens rarely used elsewhere) | High | High | Very high – ERC-20 ratio token usable anywhere |
+| **Scope of what can be tokenized** | Any event with clear resolution | Any price feed | Any basket of tokens | Any two publicly verifiable metrics (crypto, stocks, sports, music, politics…) |
+| **Economic flywheel** | Volume → fees → nothing for holders | Volume → fees → liquidity providers | Volume → tiny streaming fees | Mint/burn volume → NAV Vault → rewards loyal holders |
+| **Primary user emotion** | “Will this event happen?” | “Will price go up or down?” | “I want diversified exposure” | “I believe the underdog will close the gap” |
+| **Closest mental model** | Bet on election, Super Bowl, etc. | Perpetual futures | Crypto index fund | Tokenized rivalry / “David vs Goliath” certificate |
+
+Unlike passive tokens, PARITY is actively backed by wrapped KSM and DOT (v1), redeemable at any time for its share of the protocol’s reserves plus any bonuses. 
 
 Premiums from PARITY purchases are used to buy more KSM and DOT, building deeper reserves. 
-
-Initial liquidity for the PARITY:dUSD pool is seeded by creators, with LP tokens sent to the Treasury upon pool creation to capture trading fees.
 
 Transparent, non-custodial, and designed to be unruggable.
 
@@ -20,8 +46,8 @@ Transparent, non-custodial, and designed to be unruggable.
   - *PARITY v1*: Uses wrapped ERC-20 tokens for KSM, DOT, dUSD, and PARITY due to missing precompiles on Kusama Asset Hub.
   - *PARITY v2*: Will transition to native KSM, DOT, and dUSD after a future runtime upgrade enables precompiles, improving efficiency.
 
-- **Benefits for Kusama and KSM Holders**:
-  - *Increased KSM Demand*: Premiums buy wrapped KSM, boosting demand.
+- **Benefits for KSM and DOT Holders**:
+  - *Increased Demand*: Premiums buy wrapped KSM/DOT, boosting demand.
   - *Enhanced Ecosystem Growth*: A DeFi primitive attracts developers and users, increasing network activity.
   - *Improved Liquidity*: [DODO-style](https://docs.dodoex.io/en/product/pmm-algorithm) PMM pools deepen KSM:dUSD and DOT:dUSD liquidity and address 'AssetConversionPallet' limitations.
   - *Greater Composability*: Wrapped KSM (v1) and native KSM (v2) enable DeFi integration.
