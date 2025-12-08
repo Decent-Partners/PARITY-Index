@@ -36,6 +36,8 @@ The project evolves prediction markets, using economic incentives to align colle
 | **Primary user emotion** | “Will this event happen?” | “Will price go up or down?” | “I want diversified exposure” | “I believe the underdog will close the gap” |
 | **Closest mental model** | Bet on election, Super Bowl, etc. | Perpetual futures | Crypto index fund | Tokenized rivalry / “David vs Goliath” certificate |
 
+## 🚀 How PARITY INDEX works
+
 Unlike passive tokens, PARITY is actively backed by wrapped KSM and DOT (v1), redeemable at any time for its share of the protocol’s reserves plus any bonuses. 
 
 Premiums from PARITY purchases are used to buy more KSM and DOT, building deeper reserves. 
@@ -51,16 +53,6 @@ Transparent, non-custodial, and designed to be unruggable.
   - *Enhanced Ecosystem Growth*: A DeFi primitive attracts developers and users, increasing network activity.
   - *Improved Liquidity*: [DODO-style](https://docs.dodoex.io/en/product/pmm-algorithm) PMM pools deepen KSM:dUSD and DOT:dUSD liquidity and address 'AssetConversionPallet' limitations.
   - *Greater Composability*: Wrapped KSM (v1) and native KSM (v2) enable DeFi integration.
-
-## ✨ Summary
-
-**PARITY** is a synthetic ERC-20 token deployed on Kusama Asset Hub that tracks the market cap ratio of Kusama (KSM) to Polkadot (DOT). 
-
-It enables speculation on the relative performance of the two ecosystems, with active backing by wrapped KSM and DOT reserves (v1). 
-
-PARITY is redeemable at any time for its share of the protocol’s holdings, including wrapped KSM, DOT, and any residual wDUSD.
-
-The protocol proactively uses premiums from PARITY purchases to acquire more wrapped KSM and DOT, building a deeper, more liquid reserve aligned with the oracle-reported ratio. 
 
 DODO-style Proactive Market Maker (PMM) contracts manage liquidity for PARITY/dUSD, KSM:dUSD, and DOT:dUSD pools, while wrapped tokens enable smart contract composability in v1. Oracle-driven rebalancing ensures the DOT:KSM ratio is maintained. 
 
